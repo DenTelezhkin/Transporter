@@ -8,11 +8,21 @@
 
 import Foundation
 
-func == (left:State,right:State) -> Bool {
-    return left.value == right.value
-}
+//class State<T: Equatable> : Equatable{
+//    
+//    var value : T
+//    
+//    init(value: T) {
+//        self.value = value
+//    }
+//}
+//
+//func == (left: State<T>, right: State<T>) -> Bool {
+//    return left.value == right.value
+//}
 
-class State<T:Equatable> : Equatable{
+
+class State<T: Equatable> : Equatable {
     
     let backingVar: T[]
     
@@ -20,7 +30,7 @@ class State<T:Equatable> : Equatable{
         get {
             return backingVar[0]
         }
-    
+        
         set(newValue) {
             backingVar[0] = newValue
         }
@@ -29,4 +39,8 @@ class State<T:Equatable> : Equatable{
     init(_ value: T) {
         self.backingVar = [value]
     }
+}
+
+func ==<T>(left: State<T>, right: State<T>) -> Bool {
+    return left.value == right.value
 }

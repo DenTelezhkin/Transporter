@@ -15,7 +15,7 @@ class StateTests: XCTestCase {
         var state = State(4)
         var state2 = State(5)
         
-        XCTAssert(state == state2)
+        XCTAssertFalse(state == state2)
     }
 
 }
