@@ -7,26 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
-class State<T: Equatable> : Equatable {
+class State<StateType:Equatable>: Equatable {
     
-    let backingVar: T[]
+    let value : StateType
     
-    var value: T {
-        get {
-            return backingVar[0]
-        }
-        
-        set(newValue) {
-            backingVar[0] = newValue
-        }
-    }
-    
-    init(_ value: T) {
-        self.backingVar = [value]
+    init(_ value: StateType) {
+        self.value = value
     }
 }
 
-func ==<T>(left: State<T>, right: State<T>) -> Bool {
+func ==<StateType>(left: State<StateType>, right: State<StateType>) -> Bool {
     return left.value == right.value
 }
