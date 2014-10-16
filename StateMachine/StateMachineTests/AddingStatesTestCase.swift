@@ -32,4 +32,18 @@ class AddingStatesTestCase: XCTestCase {
         XCTAssert(machine.isStateAvailable(6))
         XCTAssert(machine.isStateAvailable(7))
     }
+    
+    func testStateAvailable() {
+        machine.addState(State(5))
+        
+        let state = machine.stateWithValue(5)
+        
+        XCTAssertNotNil(state)
+    }
+    
+    func testStateIsNotAvailable() {
+        let state = machine.stateWithValue(2)
+        
+        XCTAssertNil(state)
+    }
 }

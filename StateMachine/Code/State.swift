@@ -13,6 +13,8 @@ class State<StateType:Equatable>: Equatable {
     
     let value : StateType
     
+    var willEnterState: ((previousState : State<StateType>!)->Void)?
+    
     init(_ value: StateType) {
         self.value = value
     }
