@@ -13,50 +13,45 @@ class StateMachine<StateType:Equatable> {
     var initialState: State<StateType>?
     
     private var currentState : State<StateType>?
-    private var availableStates : [State<StateType>]
-    
-    init()
-    {
-        self.availableStates = []
-    }
+    private lazy var availableStates : [State<StateType>] = []
     
     convenience init(initialState: State<StateType>)
     {
         self.init()
-        self.availableStates.append(initialState)
+        availableStates.append(initialState)
         self.initialState = initialState
-        self.currentState = initialState
+        currentState = initialState
     }
     
     func activate() {
-        if let initial = self.initialState {
+        if let initial = initialState {
             currentState = initialState
         }
     }
     
     func activateState(stateValue: StateType) {
-        if (self.isStateAvailable(stateValue))
+        if (isStateAvailable(stateValue))
         {
-            let nextState = self.stateWithValue(stateValue)!
+            let nextState = stateWithValue(stateValue)!
             if nextState.willEnterState != nil {
-               nextState.willEnterState!(previousState: self.currentState!)
+               nextState.willEnterState!(previousState: currentState!)
             }
             
-            self.currentState = nextState
+            currentState = nextState
         }
     }
     
     func addState(state: State<StateType>) {
-        self.availableStates.append(state)
+        availableStates.append(state)
     }
     
     func addStates(states: [State<StateType>])
     {
-        self.availableStates.extend(states)
+        availableStates.extend(states)
     }
     
     func stateWithValue(value: StateType) -> State<StateType>? {
-        let state = self.availableStates.filter { (element) -> Bool in
+        let state = availableStates.filter { (element) -> Bool in
             return element.value == value
         }.first
         
@@ -64,7 +59,7 @@ class StateMachine<StateType:Equatable> {
     }
     
     func isStateAvailable(state: StateType) -> Bool {
-        if contains(self.availableStates,State(state)) {
+        if contains(availableStates,State(state)) {
             return true
         }
         return false
