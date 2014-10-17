@@ -9,17 +9,14 @@
 import Foundation
 import UIKit
 
-class State<StateType:Equatable>: Equatable {
+class State <StateType:Equatable> {
     
     let value : StateType
     
     var willEnterState: ((previousState : State<StateType>!)->Void)?
+    var didEnterState: (() -> Void)?
     
     init(_ value: StateType) {
         self.value = value
     }
-}
-
-func ==<StateType>(left: State<StateType>, right: State<StateType>) -> Bool {
-    return left.value == right.value
 }

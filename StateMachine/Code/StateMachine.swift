@@ -38,6 +38,10 @@ class StateMachine<StateType:Equatable> {
             }
             
             currentState = nextState
+            
+            if nextState.didEnterState != nil {
+                nextState.didEnterState!()
+            }
         }
     }
     
@@ -59,13 +63,16 @@ class StateMachine<StateType:Equatable> {
     }
     
     func isStateAvailable(state: StateType) -> Bool {
-        if contains(availableStates,State(state)) {
+        let states = availableStates.filter { (element) -> Bool in
+            return element.value == state
+        }
+        if !states.isEmpty {
             return true
         }
         return false
     }
     
-    func isInState(state: StateType) -> Bool {
-        return State(state) == currentState
+    func isInState(stateValue: StateType) -> Bool {
+        return stateValue == currentState?.value
     }
 }

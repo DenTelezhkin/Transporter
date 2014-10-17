@@ -26,4 +26,13 @@ class StateMachineStateSwitchingTests: XCTestCase {
         XCTAssert(machine.isStateAvailable(3))
         XCTAssertFalse(machine.isStateAvailable(4))
     }
+    
+    func testActivate() {
+        let initial = State(0)
+        let machine = StateMachine(initialState: initial)
+        
+        machine.activate()
+        
+        XCTAssert(machine.isInState(0))
+    }
 }

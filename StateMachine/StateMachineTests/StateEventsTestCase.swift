@@ -32,5 +32,16 @@ class StateEventsTestCase: XCTestCase {
         
         XCTAssert(x==6)
     }
+    
+    func testDidEnterBlock() {
+        let state = State(3)
+        var x = 1
+        state.didEnterState = { x=2 }
+        
+        machine.addState(state)
+        machine.activateState(3)
+        
+        XCTAssert(x==2)
+    }
 
 }

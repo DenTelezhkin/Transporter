@@ -14,27 +14,27 @@ class StateTests: XCTestCase {
         var state = State(6)
         var state2 = State(5+1)
         
-        XCTAssert(state == state2)
+        XCTAssert(state.value == state2.value)
     }
     
     func testNumberDifferentState() {
         let state = State(4)
         let state2 = State(3)
         
-        XCTAssertFalse(state == state2)
+        XCTAssertFalse(state.value == state2.value)
     }
 
     func testDifferentStrings() {
         let state = State("Foo")
         let state2 = State("Bar")
         
-        XCTAssertFalse(state == state2)
+        XCTAssertFalse(state.value == state2.value)
     }
     
     func testIdenticalStrings() {
         let state = State("omg")
         let state2 = State("omg")
         
-        XCTAssert(state == state2)
+        XCTAssert(state.value == state2.value)
     }
 }
