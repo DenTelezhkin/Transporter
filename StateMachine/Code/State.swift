@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class State <StateType:Equatable> {
+class State <StateType:Hashable>  {
     
     let value : StateType
     

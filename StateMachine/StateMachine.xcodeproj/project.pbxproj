@@ -11,6 +11,7 @@
 		9A31BD6E19ED55CB005BAE5A /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */; };
 		9A31BD7019EE6385005BAE5A /* StateMachineStateSwitchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */; };
 		9A31BD7219EE9B40005BAE5A /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */; };
+		9A715E9719F5578300DB9634 /* ValidTransitionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A715E9619F5578300DB9634 /* ValidTransitionsTests.swift */; };
 		9AB6BFA419EEBCA000E25A90 /* StateEventsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */; };
 		9AC8C9F51969BBB5006F1EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8C9F41969BBB5006F1EAC /* AppDelegate.swift */; };
 		9AC8C9F71969BBB5006F1EAC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8C9F61969BBB5006F1EAC /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Code/StateMachine.swift; sourceTree = SOURCE_ROOT; };
 		9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineStateSwitchingTests.swift; sourceTree = "<group>"; };
 		9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingStatesTestCase.swift; sourceTree = "<group>"; };
+		9A715E9619F5578300DB9634 /* ValidTransitionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidTransitionsTests.swift; sourceTree = "<group>"; };
 		9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateEventsTestCase.swift; sourceTree = "<group>"; };
 		9AC8C9EF1969BBB5006F1EAC /* StateMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StateMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC8C9F31969BBB5006F1EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */,
 				9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */,
+				9A715E9619F5578300DB9634 /* ValidTransitionsTests.swift */,
 				9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */,
 				9AC8CA151969CFED006F1EAC /* StateTests.swift */,
 			);
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A715E9719F5578300DB9634 /* ValidTransitionsTests.swift in Sources */,
 				9AB6BFA419EEBCA000E25A90 /* StateEventsTestCase.swift in Sources */,
 				9A31BD7219EE9B40005BAE5A /* AddingStatesTestCase.swift in Sources */,
 				9AC8CA161969CFED006F1EAC /* StateTests.swift in Sources */,
