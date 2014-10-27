@@ -25,7 +25,7 @@ class ValidTransitionsTests: XCTestCase {
         var x = 2
         
         let state = State(3)
-        state.didEnterState = { x = 4 }
+        state.didEnterState = { state in x = 4 }
         machine.addState(state)
         
         machine.activateState(3)
@@ -36,7 +36,7 @@ class ValidTransitionsTests: XCTestCase {
     func testValidTransitionsIsNotValid() {
         var x = 2
         let state = State(3)
-        state.didEnterState = { x = 4 }
+        state.didEnterState = { state in x = 4 }
         machine.addState(state)
         machine.allowOnlyValidTransitions = true
         
@@ -48,7 +48,7 @@ class ValidTransitionsTests: XCTestCase {
     func testTransitionIsValid() {
         var x=2
         let state = State(3)
-        state.didEnterState = { x = 5 }
+        state.didEnterState = { state in x = 5 }
         machine.addState(state)
         machine.allowOnlyValidTransitions = true
         machine.addTransitions(5, toStates: [3])

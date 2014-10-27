@@ -65,10 +65,10 @@ class StateMachine<StateType:Hashable> {
     }
 }
 
-internal extension StateMachine {
+private extension StateMachine {
     
     // private
-    private func _isStateAvailable(stateValue: StateType) -> Bool {
+    func _isStateAvailable(stateValue: StateType) -> Bool {
         let states = availableStates.filter { (element) -> Bool in
             return element.value == stateValue
         }
@@ -92,19 +92,25 @@ internal extension StateMachine {
         return false
     }
     
-    private func _activateState(stateValue: StateType) {
+    func _activateState(stateValue: StateType) {
         if (isStateAvailable(stateValue))
         {
-            let nextState = stateWithValue(stateValue)!
-            if nextState.willEnterState != nil {
-                nextState.willEnterState!(previousState: currentState!)
+            let oldState = currentState
+            let newState = stateWithValue(stateValue)!
+            
+            newState.willEnterState?(enteringState: newState)
+            
+            if oldState != nil {
+                oldState!.willExitState?(exitingState: oldState)
             }
             
-            currentState = nextState
+            currentState = newState
             
-            if nextState.didEnterState != nil {
-                nextState.didEnterState!()
+            if oldState != nil {
+                oldState!.didExitState?(exitingState: oldState)
             }
+            
+            newState.didEnterState?(enteringState: currentState)
         }
     }
 }

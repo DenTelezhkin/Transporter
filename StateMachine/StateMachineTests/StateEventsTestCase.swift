@@ -36,7 +36,7 @@ class StateEventsTestCase: XCTestCase {
     func testDidEnterBlock() {
         let state = State(3)
         var x = 1
-        state.didEnterState = { x=2 }
+        state.didEnterState = { state in x=2 }
         
         machine.addState(state)
         machine.activateState(3)
