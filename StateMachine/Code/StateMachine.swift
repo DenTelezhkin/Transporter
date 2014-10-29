@@ -12,24 +12,15 @@ class StateMachine<StateType:Hashable> {
     
     var initialState: State<StateType>?
     
-    var allowOnlyValidTransitions = false
-    
-    private var currentState : State<StateType>?
+    private var currentState : State<StateType>
     private lazy var availableStates : [State<StateType>] = []
-    private lazy var validTransitions : [ [StateType:[StateType]] ] = []
+    private lazy var events : [Event<StateType>] = []
     
-    convenience init(initialState: State<StateType>)
+    required init(initialState: State<StateType>)
     {
-        self.init()
-        availableStates.append(initialState)
         self.initialState = initialState
-        currentState = initialState
-    }
-    
-    func activate() {
-        if let initial = initialState {
-            currentState = initialState
-        }
+        self.currentState = initialState
+        availableStates.append(initialState)
     }
     
     func activateState(stateValue: StateType) {
@@ -48,24 +39,61 @@ class StateMachine<StateType:Hashable> {
         availableStates.extend(states)
     }
     
-    func addTransitions(fromState: StateType, toStates:[StateType]) {
-        self.validTransitions.append([fromState:toStates])
+    func addEvent(event: Event<StateType>) -> Bool {
+        return self._addEvent(event)
+    }
+    
+    func addEvents(events: [Event<StateType>]) {
+        for event in events
+        {
+            let addingEvent = self.addEvent(event)
+            if addingEvent == false {
+                println("failed adding event with name: %@",event.name)
+            }
+        }
+    }
+    
+    func fireEventNamed(eventName: StateType) {
+        if let event = eventWithName(eventName) {
+            if canFireEvent(event) {
+                activateState(event.destinationState)
+            }
+        }
+    }
+    
+    func canFireEvent(event: Event<StateType>) -> Bool{
+        return self._canFireEvent(event)
     }
     
     func stateWithValue(value: StateType) -> State<StateType>? {
-        let state = availableStates.filter { (element) -> Bool in
+        return availableStates.filter { (element) -> Bool in
             return element.value == value
         }.first
-        
-        return state
+    }
+    
+    func eventWithName(name: StateType) -> Event<StateType>? {
+        return events.filter { (element) -> Bool in
+            return element.name == name
+        }.first
     }
     
     func isInState(stateValue: StateType) -> Bool {
-        return stateValue == currentState?.value
+        return stateValue == currentState.value
     }
 }
 
 private extension StateMachine {
+    
+    func _canFireEvent(event: Event<StateType>) -> Bool {
+        if contains(event.sourceStates, currentState.value) {
+            return true
+        }
+        return false
+    }
+    
+    func _printMessage(message: String) {
+        println("StateMachine: %@",message)
+    }
     
     // private
     func _isStateAvailable(stateValue: StateType) -> Bool {
@@ -73,21 +101,7 @@ private extension StateMachine {
             return element.value == stateValue
         }
         if !states.isEmpty {
-            
-            if !allowOnlyValidTransitions { return true }
-            
-            let state = states.first
-            
-            let transitions = self.validTransitions.filter({ (transition) -> Bool in
-                if let sourceState = transition.keys.first {
-                    let destinationStates = transition[sourceState]
-                    return contains(destinationStates!, state!.value)
-                }
-                return false
-            })
-            if (!transitions.isEmpty) { return true }
-            
-            return false
+            return true
         }
         return false
     }
@@ -99,18 +113,36 @@ private extension StateMachine {
             let newState = stateWithValue(stateValue)!
             
             newState.willEnterState?(enteringState: newState)
-            
-            if oldState != nil {
-                oldState!.willExitState?(exitingState: oldState)
-            }
+            oldState.willExitState?(exitingState: oldState)
             
             currentState = newState
             
-            if oldState != nil {
-                oldState!.didExitState?(exitingState: oldState)
-            }
-            
+            oldState.didExitState?(exitingState: oldState)
             newState.didEnterState?(enteringState: currentState)
         }
+    }
+    
+    func _addEvent(event: Event<StateType>) -> Bool {
+        if event.sourceStates.isEmpty
+        {
+            _printMessage("Source states array is empty, when trying to add event.")
+            return false
+        }
+        
+        for state in event.sourceStates
+        {
+            if (self.stateWithValue(state) == nil)
+            {
+                _printMessage("Source state with value \(state) is not present")
+                return false
+            }
+        }
+        if (self.stateWithValue(event.destinationState) == nil) {
+            _printMessage("Destination state with value: \(event.destinationState)) does not exist")
+            return false
+        }
+        
+        self.events.append(event)
+        return true
     }
 }

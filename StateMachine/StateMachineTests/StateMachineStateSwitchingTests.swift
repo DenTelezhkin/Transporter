@@ -30,8 +30,6 @@ class StateMachineStateSwitchingTests: XCTestCase {
     }
     
     func testActivate() {
-        machine.activate()
-        
         XCTAssert(machine.isInState(0))
     }
     
