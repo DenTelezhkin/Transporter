@@ -33,6 +33,11 @@ class StateMachine<StateType:Hashable> {
         availableStates.append(initialState)
     }
     
+    convenience init(initialStateName: StateType)
+    {
+        self.init(initialState:State(initialStateName))
+    }
+    
     func activateState(stateValue: StateType) {
         self._activateState(stateValue)
     }

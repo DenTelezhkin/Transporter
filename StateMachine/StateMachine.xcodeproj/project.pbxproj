@@ -16,6 +16,7 @@
 		9AC8C9F71969BBB5006F1EAC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8C9F61969BBB5006F1EAC /* Images.xcassets */; };
 		9AC8CA101969C668006F1EAC /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA0F1969C668006F1EAC /* State.swift */; };
 		9AC8CA161969CFED006F1EAC /* StateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA151969CFED006F1EAC /* StateTests.swift */; };
+		9AE16B9C1A1268C0000414F2 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */; };
 		9AFD84A719FF9616001C2639 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A619FF9616001C2639 /* EventTests.swift */; };
 		9AFD84AA19FF9D76001C2639 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A919FF9D76001C2639 /* Event.swift */; };
 		9AFD84AB19FFE8F8001C2639 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A919FF9D76001C2639 /* Event.swift */; };
@@ -44,7 +45,6 @@
 		9AC8CA011969BBB5006F1EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AC8CA0F1969C668006F1EAC /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = Code/State.swift; sourceTree = SOURCE_ROOT; };
 		9AC8CA151969CFED006F1EAC /* StateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTests.swift; sourceTree = "<group>"; };
-		9ACA683A196B310D006B1A10 /* StateMachineTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StateMachineTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9AFD84A619FF9616001C2639 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		9AFD84A919FF9D76001C2639 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Code/Event.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -123,7 +123,6 @@
 			children = (
 				9A31BD7319EE9B47005BAE5A /* Test cases */,
 				9AC8CA001969BBB5006F1EAC /* Supporting Files */,
-				9ACA683A196B310D006B1A10 /* StateMachineTests-Bridging-Header.h */,
 			);
 			path = StateMachineTests;
 			sourceTree = "<group>";
@@ -236,6 +235,7 @@
 				9AC8C9F51969BBB5006F1EAC /* AppDelegate.swift in Sources */,
 				9AFD84AA19FF9D76001C2639 /* Event.swift in Sources */,
 				9AC8CA101969C668006F1EAC /* State.swift in Sources */,
+				9AE16B9C1A1268C0000414F2 /* StateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +383,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "StateMachineTests/StateMachineTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -402,7 +401,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "StateMachineTests/StateMachineTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;

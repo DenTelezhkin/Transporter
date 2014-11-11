@@ -9,6 +9,17 @@
 import UIKit
 
 enum Transition<StateType:Hashable> {
+    
+    var successful: Bool {
+        switch self {
+            case .Success(_,_):
+                return true
+        
+            case .Error(_):
+                return false
+        }
+    }
+    
     case Success(State<StateType>, State<StateType>)
     case Error(NSError)
 }
@@ -28,7 +39,6 @@ class Event<StateType:Hashable> {
         self.sourceStates = sources
         self.destinationState = destination
     }
-    
 }
 
 extension Event: Equatable {}
