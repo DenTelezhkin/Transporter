@@ -146,7 +146,6 @@
 				9AC8C9EB1969BBB5006F1EAC /* Sources */,
 				9AC8C9EC1969BBB5006F1EAC /* Frameworks */,
 				9AC8C9ED1969BBB5006F1EAC /* Resources */,
-				8B0239A5D26342378E70742C /* Find unused imports */,
 			);
 			buildRules = (
 			);
@@ -228,23 +227,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8B0239A5D26342378E70742C /* Find unused imports */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Find unused imports";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"/Users/Denys/Library/Application Support/Developer/Shared/Xcode/Plug-ins/xcfui.xcplugin/Contents/Resources/fui_script.sh\" \"/Users/Denys/Developer/Projects/StateMachine.swift/StateMachine\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9AC8C9EB1969BBB5006F1EAC /* Sources */ = {

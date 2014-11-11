@@ -8,6 +8,16 @@
 
 import UIKit
 
+struct Errors {
+    static let stateMachinedDomain = "com.DenHeadless.StateMachine"
+    
+    enum Transition: Int {
+        case InvalidTransition
+        case TransitionDeclined
+        case UnknownEvent
+    }
+}
+
 class StateMachine<StateType:Hashable> {
     
     var initialState: State<StateType>?
@@ -53,16 +63,47 @@ class StateMachine<StateType:Hashable> {
         }
     }
     
-    func fireEventNamed(eventName: StateType) {
+    func fireEventNamed(eventName: StateType) -> Transition<StateType> {
         if let event = eventWithName(eventName) {
             if canFireEvent(event) {
-                activateState(event.destinationState)
+                if let shouldBlock = event.shouldFireEvent {
+                    if shouldBlock(event: event) {
+                        let sourceState = self.currentState
+                        activateState(event.destinationState)
+                        return Transition.Success(sourceState, self.currentState)
+                    }
+                    else {
+                        return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                            code: Errors.Transition.TransitionDeclined.rawValue, userInfo: nil))
+                    }
+                }
+                else {
+                    let sourceState = self.currentState
+                    activateState(event.destinationState)
+                    return Transition.Success(sourceState, self.currentState)
+                }
             }
+            else {
+                return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                    code:Errors.Transition.InvalidTransition.rawValue,userInfo: nil))
+            }
+        }
+        else {
+            return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                code: Errors.Transition.UnknownEvent.rawValue, userInfo: nil))
         }
     }
     
     func canFireEvent(event: Event<StateType>) -> Bool{
         return self._canFireEvent(event)
+    }
+    
+    func canFireEvent(eventName: StateType) -> Bool {
+        if let event = self.eventWithName(eventName)
+        {
+           return self._canFireEvent(event)
+        }
+        return false
     }
     
     func stateWithValue(value: StateType) -> State<StateType>? {
@@ -85,6 +126,9 @@ class StateMachine<StateType:Hashable> {
 private extension StateMachine {
     
     func _canFireEvent(event: Event<StateType>) -> Bool {
+        if !contains(self.events, event) {
+            return false
+        }
         if contains(event.sourceStates, currentState.value) {
             return true
         }
