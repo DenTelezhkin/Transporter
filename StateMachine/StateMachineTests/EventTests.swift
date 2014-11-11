@@ -114,7 +114,7 @@ class StringTests: XCTestCase {
         }
     }
     
-    func testStated() {
+    func testStatePassed() {
         let event = Event(name: "Pass", sourceStates: ["Initial"], destinationState: "Passed")
         machine.addEvent(event)
         
@@ -137,5 +137,31 @@ class StringTests: XCTestCase {
         case .Error(let error):
             XCTAssert(error.code == Errors.Transition.UnknownEvent.rawValue)
         }
+    }
+    
+    func testWillFireEventBlock() {
+        let event = Event(name: "Pass", sourceStates: ["Initial"], destinationState: "Passed")
+        var foo = 5
+        event.willFireEvent = { event in
+            XCTAssert(self.machine.isInState("Initial"))
+            foo = 7
+        }
+        machine.addEvent(event)
+        
+        var transition = machine.fireEventNamed("Pass")
+        XCTAssert(foo == 7)
+    }
+    
+    func testDidFireEventBlock() {
+        let event = Event(name: "Pass", sourceStates: ["Initial"], destinationState: "Passed")
+        var foo = 5
+        event.didFireEvent = { event in
+            XCTAssert(self.machine.isInState("Passed"))
+            foo = 7
+        }
+        machine.addEvent(event)
+        
+        let transition = machine.fireEventNamed("Pass")
+        XCTAssert(foo == 7)
     }
 }

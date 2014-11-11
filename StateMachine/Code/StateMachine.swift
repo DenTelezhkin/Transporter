@@ -64,44 +64,17 @@ class StateMachine<StateType:Hashable> {
     }
     
     func fireEventNamed(eventName: StateType) -> Transition<StateType> {
-        if let event = eventWithName(eventName) {
-            if canFireEvent(event) {
-                if let shouldBlock = event.shouldFireEvent {
-                    if shouldBlock(event: event) {
-                        let sourceState = self.currentState
-                        activateState(event.destinationState)
-                        return Transition.Success(sourceState, self.currentState)
-                    }
-                    else {
-                        return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
-                            code: Errors.Transition.TransitionDeclined.rawValue, userInfo: nil))
-                    }
-                }
-                else {
-                    let sourceState = self.currentState
-                    activateState(event.destinationState)
-                    return Transition.Success(sourceState, self.currentState)
-                }
-            }
-            else {
-                return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
-                    code:Errors.Transition.InvalidTransition.rawValue,userInfo: nil))
-            }
-        }
-        else {
-            return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
-                code: Errors.Transition.UnknownEvent.rawValue, userInfo: nil))
-        }
+        return _fireEventNamed(eventName)
     }
     
     func canFireEvent(event: Event<StateType>) -> Bool{
-        return self._canFireEvent(event)
+        return _canFireEvent(event)
     }
     
     func canFireEvent(eventName: StateType) -> Bool {
-        if let event = self.eventWithName(eventName)
+        if let event = eventWithName(eventName)
         {
-           return self._canFireEvent(event)
+           return _canFireEvent(event)
         }
         return false
     }
@@ -126,13 +99,48 @@ class StateMachine<StateType:Hashable> {
 private extension StateMachine {
     
     func _canFireEvent(event: Event<StateType>) -> Bool {
-        if !contains(self.events, event) {
+        if !contains(events, event) {
             return false
         }
         if contains(event.sourceStates, currentState.value) {
             return true
         }
         return false
+    }
+    
+    func _fireEventNamed(eventName: StateType) -> Transition<StateType> {
+        if let event = eventWithName(eventName) {
+            if canFireEvent(event) {
+                if let shouldBlock = event.shouldFireEvent {
+                    if shouldBlock(event: event) {
+                        let sourceState = self.currentState
+                        event.willFireEvent?(event: event)
+                        activateState(event.destinationState)
+                        event.didFireEvent?(event: event)
+                        return Transition.Success(sourceState, self.currentState)
+                    }
+                    else {
+                        return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                            code: Errors.Transition.TransitionDeclined.rawValue, userInfo: nil))
+                    }
+                }
+                else {
+                    let sourceState = self.currentState
+                    event.willFireEvent?(event: event)
+                    activateState(event.destinationState)
+                    event.didFireEvent?(event: event)
+                    return Transition.Success(sourceState, self.currentState)
+                }
+            }
+            else {
+                return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                    code:Errors.Transition.InvalidTransition.rawValue,userInfo: nil))
+            }
+        }
+        else {
+            return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                code: Errors.Transition.UnknownEvent.rawValue, userInfo: nil))
+        }
     }
     
     func _printMessage(message: String) {
