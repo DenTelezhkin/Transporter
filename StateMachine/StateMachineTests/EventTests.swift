@@ -91,7 +91,7 @@ class StringTests: XCTestCase {
         let transition = machine.fireEventNamed("Pass")
         
         switch transition {
-        case .Success(let sourceState, let destinationState):
+        case .Success(_,_):
             XCTFail("success should not be fired")
         case .Error(let error):
             XCTAssert(error.code == Errors.Transition.TransitionDeclined.rawValue)
@@ -107,7 +107,7 @@ class StringTests: XCTestCase {
         let transition = machine.fireEventNamed("Completed")
         
         switch transition {
-        case .Success(let sourceState, let destinationState):
+        case .Success(_,_):
             XCTFail("success should not be fired")
         case .Error(let error):
             XCTAssert(error.code == Errors.Transition.InvalidTransition.rawValue)
@@ -123,7 +123,7 @@ class StringTests: XCTestCase {
         case .Success(let sourceState,let destinationState):
             XCTAssert(sourceState.value == "Initial")
             XCTAssert(destinationState.value == "Passed")
-        case .Error(let error):
+        case .Error(_):
             XCTFail("There shouldn't be any errors")
         }
     }
@@ -132,7 +132,7 @@ class StringTests: XCTestCase {
         let transition = machine.fireEventNamed("Foo")
         
         switch transition {
-        case .Success(let sourceState, let destinationState):
+        case .Success(_, _):
             XCTFail("Event does not exist and should not be fired")
         case .Error(let error):
             XCTAssert(error.code == Errors.Transition.UnknownEvent.rawValue)
