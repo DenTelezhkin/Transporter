@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0AC5581A14DA6D002BAF28 /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0AC5571A14DA6D002BAF28 /* EnumTestCase.swift */; };
 		9A31BD6C19ED500E005BAE5A /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA0F1969C668006F1EAC /* State.swift */; };
 		9A31BD6E19ED55CB005BAE5A /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */; };
 		9A31BD7019EE6385005BAE5A /* StateMachineStateSwitchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A0AC5571A14DA6D002BAF28 /* EnumTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTestCase.swift; sourceTree = "<group>"; };
 		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Code/StateMachine.swift; sourceTree = SOURCE_ROOT; };
 		9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineStateSwitchingTests.swift; sourceTree = "<group>"; };
 		9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingStatesTestCase.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */,
 				9AC8CA151969CFED006F1EAC /* StateTests.swift */,
 				9AFD84A619FF9616001C2639 /* EventTests.swift */,
+				9A0AC5571A14DA6D002BAF28 /* EnumTestCase.swift */,
 			);
 			name = "Test cases";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				9AFD84AB19FFE8F8001C2639 /* Event.swift in Sources */,
 				9AB6BFA419EEBCA000E25A90 /* StateEventsTestCase.swift in Sources */,
 				9A31BD7219EE9B40005BAE5A /* AddingStatesTestCase.swift in Sources */,
+				9A0AC5581A14DA6D002BAF28 /* EnumTestCase.swift in Sources */,
 				9AC8CA161969CFED006F1EAC /* StateTests.swift in Sources */,
 				9A31BD6E19ED55CB005BAE5A /* StateMachine.swift in Sources */,
 				9A31BD6C19ED500E005BAE5A /* State.swift in Sources */,

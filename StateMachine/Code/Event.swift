@@ -26,7 +26,7 @@ enum Transition<StateType:Hashable> {
 
 class Event<StateType:Hashable> {
     
-    let name : StateType
+    let name : String
     let sourceStates: [StateType]
     let destinationState: StateType
     
@@ -34,7 +34,7 @@ class Event<StateType:Hashable> {
     var willFireEvent:   ( (event : Event) -> Void )?
     var didFireEvent:    ( (event : Event) -> Void )?
     
-    required init(name: StateType, sourceStates sources: [StateType], destinationState destination: StateType) {
+    required init(name: String, sourceStates sources: [StateType], destinationState destination: StateType) {
         self.name = name
         self.sourceStates = sources
         self.destinationState = destination

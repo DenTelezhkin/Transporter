@@ -20,7 +20,7 @@ class NumberTests: XCTestCase {
     }
     
     func testEventWithNoMatchingStates() {
-        let event = Event(name: 1, sourceStates: [1,2], destinationState: 3)
+        let event = Event(name: "", sourceStates: [1,2], destinationState: 3)
         
         XCTAssertFalse(machine.addEvent(event))
     }
@@ -28,7 +28,7 @@ class NumberTests: XCTestCase {
     func testEventWithNoSourceState() {
         machine.addState(State(2))
         
-        let event = Event(name: 1, sourceStates: [], destinationState: 2)
+        let event = Event(name: "", sourceStates: [], destinationState: 2)
         
         XCTAssertFalse(machine.addEvent(event))
     }
@@ -37,20 +37,20 @@ class NumberTests: XCTestCase {
         let state = State(3)
         
         machine.addState(state)
-        let event = Event(name: 3, sourceStates: [0], destinationState: 3)
+        let event = Event(name: "3", sourceStates: [0], destinationState: 3)
         machine.addEvent(event)
         
-        machine.fireEventNamed(3)
+        machine.fireEventNamed("3")
         XCTAssert(machine.isInState(3))
     }
     
     func testFiringEventWithWrongState() {
         let state = State(2)
         
-        let event = Event(name: 3, sourceStates: [4,5], destinationState: 2)
+        let event = Event(name: "3", sourceStates: [4,5], destinationState: 2)
         machine.addState(state)
         machine.addEvent(event)
-        machine.fireEventNamed(3)
+        machine.fireEventNamed("3")
         
         XCTAssert(machine.isInState(0))
     }
@@ -83,7 +83,7 @@ class StringTests: XCTestCase {
     
     func testShouldFireEventBlock() {
         let event = Event(name: "Pass", sourceStates: ["Initial"], destinationState: "Passed")
-        event.shouldFireEvent = { event in
+        event.shouldFireEvent = { _ in
             return false
         }
         machine.addEvent(event)
@@ -142,7 +142,7 @@ class StringTests: XCTestCase {
     func testWillFireEventBlock() {
         let event = Event(name: "Pass", sourceStates: ["Initial"], destinationState: "Passed")
         var foo = 5
-        event.willFireEvent = { event in
+        event.willFireEvent = { _ in
             XCTAssert(self.machine.isInState("Initial"))
             foo = 7
         }
@@ -155,7 +155,7 @@ class StringTests: XCTestCase {
     func testDidFireEventBlock() {
         let event = Event(name: "Pass", sourceStates: ["Initial"], destinationState: "Passed")
         var foo = 5
-        event.didFireEvent = { event in
+        event.didFireEvent = { _ in
             XCTAssert(self.machine.isInState("Passed"))
             foo = 7
         }

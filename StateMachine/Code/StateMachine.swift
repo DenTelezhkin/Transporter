@@ -68,7 +68,7 @@ class StateMachine<StateType:Hashable> {
         }
     }
     
-    func fireEventNamed(eventName: StateType) -> Transition<StateType> {
+    func fireEventNamed(eventName: String) -> Transition<StateType> {
         return _fireEventNamed(eventName)
     }
     
@@ -76,7 +76,7 @@ class StateMachine<StateType:Hashable> {
         return _canFireEvent(event)
     }
     
-    func canFireEvent(eventName: StateType) -> Bool {
+    func canFireEvent(eventName: String) -> Bool {
         if let event = eventWithName(eventName)
         {
            return _canFireEvent(event)
@@ -90,7 +90,7 @@ class StateMachine<StateType:Hashable> {
         }.first
     }
     
-    func eventWithName(name: StateType) -> Event<StateType>? {
+    func eventWithName(name: String) -> Event<StateType>? {
         return events.filter { (element) -> Bool in
             return element.name == name
         }.first
@@ -113,7 +113,7 @@ private extension StateMachine {
         return false
     }
     
-    func _fireEventNamed(eventName: StateType) -> Transition<StateType> {
+    func _fireEventNamed(eventName: String) -> Transition<StateType> {
         if let event = eventWithName(eventName) {
             if canFireEvent(event) {
                 if let shouldBlock = event.shouldFireEvent {

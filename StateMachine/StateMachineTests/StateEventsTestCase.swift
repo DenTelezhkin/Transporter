@@ -23,7 +23,7 @@ class StateEventsTestCase: XCTestCase {
     func testWillEnterBlock() {
         let state = State(5)
         var x = 5
-        state.willEnterState = { (fromState) in
+        state.willEnterState = { _ in
             x = 6
         }
         
@@ -36,7 +36,7 @@ class StateEventsTestCase: XCTestCase {
     func testDidEnterBlock() {
         let state = State(3)
         var x = 1
-        state.didEnterState = { state in x=2 }
+        state.didEnterState = { _ in x=2 }
         
         machine.addState(state)
         machine.activateState(3)
