@@ -9,15 +9,15 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-               BuildableName = "StateMachine.app"
-               BlueprintName = "StateMachine"
-               ReferencedContainer = "container:StateMachine.xcodeproj">
+               BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
+               BuildableName = "TransporterTests.xctest"
+               BlueprintName = "TransporterTests"
+               ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,19 +33,19 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-               BuildableName = "StateMachineTests.xctest"
-               BlueprintName = "StateMachineTests"
-               ReferencedContainer = "container:StateMachine.xcodeproj">
+               BuildableName = "TransporterTests.xctest"
+               BlueprintName = "TransporterTests"
+               ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-            BuildableName = "StateMachine.app"
-            BlueprintName = "StateMachine"
-            ReferencedContainer = "container:StateMachine.xcodeproj">
+            BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
+            BuildableName = "TransporterTests.xctest"
+            BlueprintName = "TransporterTests"
+            ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -58,15 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-            BuildableName = "StateMachine.app"
-            BlueprintName = "StateMachine"
-            ReferencedContainer = "container:StateMachine.xcodeproj">
+            BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
+            BuildableName = "TransporterTests.xctest"
+            BlueprintName = "TransporterTests"
+            ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -76,15 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-            BuildableName = "StateMachine.app"
-            BlueprintName = "StateMachine"
-            ReferencedContainer = "container:StateMachine.xcodeproj">
+            BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
+            BuildableName = "TransporterTests.xctest"
+            BlueprintName = "TransporterTests"
+            ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

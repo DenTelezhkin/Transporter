@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A0AC5581A14DA6D002BAF28 /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0AC5571A14DA6D002BAF28 /* EnumTestCase.swift */; };
 		9A31BD6C19ED500E005BAE5A /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA0F1969C668006F1EAC /* State.swift */; };
 		9A31BD6E19ED55CB005BAE5A /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */; };
-		9A31BD7019EE6385005BAE5A /* StateMachineStateSwitchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */; };
-		9A31BD7219EE9B40005BAE5A /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */; };
-		9AB6BFA419EEBCA000E25A90 /* StateEventsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */; };
-		9AC8C9F51969BBB5006F1EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8C9F41969BBB5006F1EAC /* AppDelegate.swift */; };
-		9AC8C9F71969BBB5006F1EAC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8C9F61969BBB5006F1EAC /* Images.xcassets */; };
+		9AA3C84E1A14E34600D68CC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA3C84D1A14E34600D68CC3 /* Images.xcassets */; };
+		9AA3C8511A14E34F00D68CC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C84F1A14E34F00D68CC3 /* AppDelegate.swift */; };
+		9AA3C8591A14E37400D68CC3 /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */; };
+		9AA3C85A1A14E37400D68CC3 /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */; };
+		9AA3C85B1A14E37400D68CC3 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8551A14E37400D68CC3 /* EventTests.swift */; };
+		9AA3C85C1A14E37400D68CC3 /* StateEventsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */; };
+		9AA3C85D1A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */; };
+		9AA3C85E1A14E37400D68CC3 /* StateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8581A14E37400D68CC3 /* StateTests.swift */; };
 		9AC8CA101969C668006F1EAC /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA0F1969C668006F1EAC /* State.swift */; };
-		9AC8CA161969CFED006F1EAC /* StateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA151969CFED006F1EAC /* StateTests.swift */; };
 		9AE16B9C1A1268C0000414F2 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */; };
-		9AFD84A719FF9616001C2639 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A619FF9616001C2639 /* EventTests.swift */; };
 		9AFD84AA19FF9D76001C2639 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A919FF9D76001C2639 /* Event.swift */; };
 		9AFD84AB19FFE8F8001C2639 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A919FF9D76001C2639 /* Event.swift */; };
 /* End PBXBuildFile section */
@@ -34,20 +34,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A0AC5571A14DA6D002BAF28 /* EnumTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTestCase.swift; sourceTree = "<group>"; };
 		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Code/StateMachine.swift; sourceTree = SOURCE_ROOT; };
-		9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineStateSwitchingTests.swift; sourceTree = "<group>"; };
-		9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingStatesTestCase.swift; sourceTree = "<group>"; };
-		9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateEventsTestCase.swift; sourceTree = "<group>"; };
-		9AC8C9EF1969BBB5006F1EAC /* StateMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StateMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC8C9F31969BBB5006F1EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AC8C9F41969BBB5006F1EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9AC8C9F61969BBB5006F1EAC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9AC8C9FC1969BBB5006F1EAC /* StateMachineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StateMachineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC8CA011969BBB5006F1EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA3C84D1A14E34600D68CC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Example/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		9AA3C84F1A14E34F00D68CC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C8501A14E34F00D68CC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = SOURCE_ROOT; };
+		9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddingStatesTestCase.swift; path = Tests/AddingStatesTestCase.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnumTestCase.swift; path = Tests/EnumTestCase.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C8551A14E37400D68CC3 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTests.swift; path = Tests/EventTests.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateEventsTestCase.swift; path = Tests/StateEventsTestCase.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachineStateSwitchingTests.swift; path = Tests/StateMachineStateSwitchingTests.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C8581A14E37400D68CC3 /* StateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateTests.swift; path = Tests/StateTests.swift; sourceTree = SOURCE_ROOT; };
+		9AA3C85F1A14E38200D68CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
+		9AC8C9EF1969BBB5006F1EAC /* Transporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AC8C9FC1969BBB5006F1EAC /* TransporterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransporterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC8CA0F1969C668006F1EAC /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = Code/State.swift; sourceTree = SOURCE_ROOT; };
-		9AC8CA151969CFED006F1EAC /* StateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTests.swift; sourceTree = "<group>"; };
-		9AFD84A619FF9616001C2639 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		9AFD84A919FF9D76001C2639 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Code/Event.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -72,12 +72,12 @@
 		9A31BD7319EE9B47005BAE5A /* Test cases */ = {
 			isa = PBXGroup;
 			children = (
-				9A31BD7119EE9B40005BAE5A /* AddingStatesTestCase.swift */,
-				9A31BD6F19EE6384005BAE5A /* StateMachineStateSwitchingTests.swift */,
-				9AB6BFA319EEBCA000E25A90 /* StateEventsTestCase.swift */,
-				9AC8CA151969CFED006F1EAC /* StateTests.swift */,
-				9AFD84A619FF9616001C2639 /* EventTests.swift */,
-				9A0AC5571A14DA6D002BAF28 /* EnumTestCase.swift */,
+				9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */,
+				9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */,
+				9AA3C8551A14E37400D68CC3 /* EventTests.swift */,
+				9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */,
+				9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */,
+				9AA3C8581A14E37400D68CC3 /* StateTests.swift */,
 			);
 			name = "Test cases";
 			sourceTree = "<group>";
@@ -85,8 +85,8 @@
 		9AC8C9E61969BBB5006F1EAC = {
 			isa = PBXGroup;
 			children = (
-				9AC8C9F11969BBB5006F1EAC /* StateMachine */,
-				9AC8C9FF1969BBB5006F1EAC /* StateMachineTests */,
+				9AC8C9F11969BBB5006F1EAC /* Code */,
+				9AC8C9FF1969BBB5006F1EAC /* Tests */,
 				9AC8C9F01969BBB5006F1EAC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,46 +94,48 @@
 		9AC8C9F01969BBB5006F1EAC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AC8C9EF1969BBB5006F1EAC /* StateMachine.app */,
-				9AC8C9FC1969BBB5006F1EAC /* StateMachineTests.xctest */,
+				9AC8C9EF1969BBB5006F1EAC /* Transporter.app */,
+				9AC8C9FC1969BBB5006F1EAC /* TransporterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9AC8C9F11969BBB5006F1EAC /* StateMachine */ = {
+		9AC8C9F11969BBB5006F1EAC /* Code */ = {
 			isa = PBXGroup;
 			children = (
 				9AFD84A919FF9D76001C2639 /* Event.swift */,
 				9AC8CA0F1969C668006F1EAC /* State.swift */,
 				9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */,
-				9AC8C9F61969BBB5006F1EAC /* Images.xcassets */,
+				9AA3C84D1A14E34600D68CC3 /* Images.xcassets */,
 				9AC8C9F21969BBB5006F1EAC /* Supporting Files */,
 			);
+			name = Code;
 			path = StateMachine;
 			sourceTree = "<group>";
 		};
 		9AC8C9F21969BBB5006F1EAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9AC8C9F41969BBB5006F1EAC /* AppDelegate.swift */,
-				9AC8C9F31969BBB5006F1EAC /* Info.plist */,
+				9AA3C84F1A14E34F00D68CC3 /* AppDelegate.swift */,
+				9AA3C8501A14E34F00D68CC3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9AC8C9FF1969BBB5006F1EAC /* StateMachineTests */ = {
+		9AC8C9FF1969BBB5006F1EAC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				9A31BD7319EE9B47005BAE5A /* Test cases */,
 				9AC8CA001969BBB5006F1EAC /* Supporting Files */,
 			);
+			name = Tests;
 			path = StateMachineTests;
 			sourceTree = "<group>";
 		};
 		9AC8CA001969BBB5006F1EAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9AC8CA011969BBB5006F1EAC /* Info.plist */,
+				9AA3C85F1A14E38200D68CC3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -141,9 +143,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9AC8C9EE1969BBB5006F1EAC /* StateMachine */ = {
+		9AC8C9EE1969BBB5006F1EAC /* Transporter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9AC8CA061969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "StateMachine" */;
+			buildConfigurationList = 9AC8CA061969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "Transporter" */;
 			buildPhases = (
 				9AC8C9EB1969BBB5006F1EAC /* Sources */,
 				9AC8C9EC1969BBB5006F1EAC /* Frameworks */,
@@ -153,14 +155,14 @@
 			);
 			dependencies = (
 			);
-			name = StateMachine;
+			name = Transporter;
 			productName = StateMachine;
-			productReference = 9AC8C9EF1969BBB5006F1EAC /* StateMachine.app */;
+			productReference = 9AC8C9EF1969BBB5006F1EAC /* Transporter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9AC8C9FB1969BBB5006F1EAC /* StateMachineTests */ = {
+		9AC8C9FB1969BBB5006F1EAC /* TransporterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9AC8CA091969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "StateMachineTests" */;
+			buildConfigurationList = 9AC8CA091969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "TransporterTests" */;
 			buildPhases = (
 				9AC8C9F81969BBB5006F1EAC /* Sources */,
 				9AC8C9F91969BBB5006F1EAC /* Frameworks */,
@@ -171,9 +173,9 @@
 			dependencies = (
 				9AC8C9FE1969BBB5006F1EAC /* PBXTargetDependency */,
 			);
-			name = StateMachineTests;
+			name = TransporterTests;
 			productName = StateMachineTests;
-			productReference = 9AC8C9FC1969BBB5006F1EAC /* StateMachineTests.xctest */;
+			productReference = 9AC8C9FC1969BBB5006F1EAC /* TransporterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +196,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9AC8C9EA1969BBB5006F1EAC /* Build configuration list for PBXProject "StateMachine" */;
+			buildConfigurationList = 9AC8C9EA1969BBB5006F1EAC /* Build configuration list for PBXProject "Transporter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -206,8 +208,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9AC8C9EE1969BBB5006F1EAC /* StateMachine */,
-				9AC8C9FB1969BBB5006F1EAC /* StateMachineTests */,
+				9AC8C9EE1969BBB5006F1EAC /* Transporter */,
+				9AC8C9FB1969BBB5006F1EAC /* TransporterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -217,7 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC8C9F71969BBB5006F1EAC /* Images.xcassets in Resources */,
+				9AA3C84E1A14E34600D68CC3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,9 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC8C9F51969BBB5006F1EAC /* AppDelegate.swift in Sources */,
 				9AFD84AA19FF9D76001C2639 /* Event.swift in Sources */,
 				9AC8CA101969C668006F1EAC /* State.swift in Sources */,
+				9AA3C8511A14E34F00D68CC3 /* AppDelegate.swift in Sources */,
 				9AE16B9C1A1268C0000414F2 /* StateMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,15 +248,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AFD84A719FF9616001C2639 /* EventTests.swift in Sources */,
+				9AA3C8591A14E37400D68CC3 /* AddingStatesTestCase.swift in Sources */,
 				9AFD84AB19FFE8F8001C2639 /* Event.swift in Sources */,
-				9AB6BFA419EEBCA000E25A90 /* StateEventsTestCase.swift in Sources */,
-				9A31BD7219EE9B40005BAE5A /* AddingStatesTestCase.swift in Sources */,
-				9A0AC5581A14DA6D002BAF28 /* EnumTestCase.swift in Sources */,
-				9AC8CA161969CFED006F1EAC /* StateTests.swift in Sources */,
+				9AA3C85B1A14E37400D68CC3 /* EventTests.swift in Sources */,
+				9AA3C85A1A14E37400D68CC3 /* EnumTestCase.swift in Sources */,
+				9AA3C85D1A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift in Sources */,
 				9A31BD6E19ED55CB005BAE5A /* StateMachine.swift in Sources */,
 				9A31BD6C19ED500E005BAE5A /* State.swift in Sources */,
-				9A31BD7019EE6385005BAE5A /* StateMachineStateSwitchingTests.swift in Sources */,
+				9AA3C85E1A14E37400D68CC3 /* StateTests.swift in Sources */,
+				9AA3C85C1A14E37400D68CC3 /* StateEventsTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +265,7 @@
 /* Begin PBXTargetDependency section */
 		9AC8C9FE1969BBB5006F1EAC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9AC8C9EE1969BBB5006F1EAC /* StateMachine */;
+			target = 9AC8C9EE1969BBB5006F1EAC /* Transporter */;
 			targetProxy = 9AC8C9FD1969BBB5006F1EAC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -353,7 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = StateMachine/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -364,7 +366,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = StateMachine/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -373,7 +375,7 @@
 		9AC8CA0A1969BBB5006F1EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StateMachine.app/StateMachine";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -383,36 +385,36 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = StateMachineTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Transporter.app/Transporter";
 			};
 			name = Debug;
 		};
 		9AC8CA0B1969BBB5006F1EAC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StateMachine.app/StateMachine";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = StateMachineTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Transporter.app/Transporter";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9AC8C9EA1969BBB5006F1EAC /* Build configuration list for PBXProject "StateMachine" */ = {
+		9AC8C9EA1969BBB5006F1EAC /* Build configuration list for PBXProject "Transporter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AC8CA041969BBB5006F1EAC /* Debug */,
@@ -421,7 +423,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9AC8CA061969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "StateMachine" */ = {
+		9AC8CA061969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "Transporter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AC8CA071969BBB5006F1EAC /* Debug */,
@@ -430,7 +432,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9AC8CA091969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "StateMachineTests" */ = {
+		9AC8CA091969BBB5006F1EAC /* Build configuration list for PBXNativeTarget "TransporterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AC8CA0A1969BBB5006F1EAC /* Debug */,
