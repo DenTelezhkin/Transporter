@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.9"
 
   s.source       = { :git => "https://github.com/DenHeadless/Transporter.git", :tag => s.version.to_s }
-  s.source_files  = "Code/*.{swift}"
+  s.source_files  = "Code/*.{h,swift}"
   s.framework  = "Foundation"
   s.requires_arc = true
 end
