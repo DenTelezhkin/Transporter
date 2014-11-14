@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/DenHeadless/Transporter.png?branch=master) &nbsp;
+![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 Transporter 
 ==================
 
