@@ -52,7 +52,7 @@ class EnumTestCase: XCTestCase {
         let event = Event(name: EnumEvents.MakeProgress, sourceStates: [StateEnum.Start,StateEnum.Progress], destinationState: StateEnum.Progress)
         
         machine.addEvent(event)
-        machine.fireEventNamed(EnumEvents.MakeProgress)
+        machine.fireEvent(EnumEvents.MakeProgress)
         
         XCTAssert(machine.isInState(.Progress))
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2BB2651A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */; };
+		9A2BB2661A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */; };
 		9A3527101A1601770006AB0F /* Transporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3527051A1601770006AB0F /* Transporter.framework */; };
 		9A35271E1A1601D60006AB0F /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */; };
 		9A35271F1A1601D60006AB0F /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */; };
@@ -49,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachineConstructorsTests.swift; path = Tests/StateMachineConstructorsTests.swift; sourceTree = SOURCE_ROOT; };
 		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Code/StateMachine.swift; sourceTree = SOURCE_ROOT; };
 		9A3526FF1A1601050006AB0F /* MessagesState.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MessagesState.playground; sourceTree = "<group>"; };
 		9A3527051A1601770006AB0F /* Transporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Transporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +223,7 @@
 				9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */,
 				9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */,
 				9AA3C8581A14E37400D68CC3 /* StateTests.swift */,
+				9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */,
 			);
 			name = Tests;
 			path = StateMachineTests;
@@ -422,6 +426,7 @@
 				9A3527231A1601D60006AB0F /* StateTests.swift in Sources */,
 				9A35271E1A1601D60006AB0F /* AddingStatesTestCase.swift in Sources */,
 				9A3527221A1601D60006AB0F /* StateMachineStateSwitchingTests.swift in Sources */,
+				9A2BB2661A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +450,7 @@
 				9AA3C85D1A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift in Sources */,
 				9AA3C85E1A14E37400D68CC3 /* StateTests.swift in Sources */,
 				9AA3C85C1A14E37400D68CC3 /* StateEventsTestCase.swift in Sources */,
+				9A2BB2651A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +728,7 @@
 				9A35271A1A1601780006AB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A35271B1A1601780006AB0F /* Build configuration list for PBXNativeTarget "Tests-OSX" */ = {
 			isa = XCConfigurationList;
@@ -730,6 +737,7 @@
 				9A35271D1A1601780006AB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9AA3C87F1A14F11700D68CC3 /* Build configuration list for PBXNativeTarget "Transporter-iOS" */ = {
 			isa = XCConfigurationList;

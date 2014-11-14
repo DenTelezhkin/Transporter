@@ -24,13 +24,11 @@ let unlocked = State(TurnStile.Unlocked)
 locked.didEnterState = { _ in lockEntrance() }
 unlocked.didEnterState = { _ in unlockEntrance() }
 
-let turnstile = StateMachine(initialState: locked)
-turnstile.addState(unlocked)
-
 let coinEvent = Event(name: "Coin", sourceStates: [TurnStile.Locked], destinationState: TurnStile.Unlocked)
 let pushEvent = Event(name: "Push", sourceStates: [TurnStile.Unlocked], destinationState: TurnStile.Locked)
 
+let turnstile = StateMachine(initialState: locked, states: unlocked)
 turnstile.addEvents([coinEvent,pushEvent])
 
-turnstile.fireEventNamed("Coin")
+turnstile.fireEvent("Coin")
 turnstile.isInState(.Unlocked)

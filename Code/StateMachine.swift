@@ -12,9 +12,9 @@ public struct Errors {
     public static let stateMachineDomain = "com.DenHeadless.StateMachine"
     
     public enum Transition: Int {
-        case InvalidTransition
         case TransitionDeclined
         case UnknownEvent
+        case WrongSourceState
     }
 }
 
@@ -36,6 +36,12 @@ public class StateMachine<StateType:Hashable> {
     convenience public init(initialStateName: StateType)
     {
         self.init(initialState:State(initialStateName))
+    }
+    
+    convenience public init(initialState: State<StateType>, states: [State<StateType>])
+    {
+        self.init(initialState: initialState)
+        self.availableStates.extend(states)
     }
     
     public func activateState(stateValue: StateType) {
@@ -68,20 +74,24 @@ public class StateMachine<StateType:Hashable> {
         }
     }
     
-    public func fireEventNamed(eventName: String) -> Transition<StateType> {
+    public func fireEvent(event: Event<StateType>) -> Transition<StateType> {
+        return _fireEventNamed(event.name)
+    }
+    
+    public func fireEvent(eventName: String) -> Transition<StateType> {
         return _fireEventNamed(eventName)
     }
     
-    public func canFireEvent(event: Event<StateType>) -> Bool{
+    public func canFireEvent(event: Event<StateType>) -> (canFire: Bool, error: Errors.Transition?) {
         return _canFireEvent(event)
     }
     
-    public func canFireEvent(eventName: String) -> Bool {
+    public func canFireEvent(eventName: String) -> (canFire: Bool, error: Errors.Transition?) {
         if let event = eventWithName(eventName)
         {
            return _canFireEvent(event)
         }
-        return false
+        return (false, Errors.Transition.UnknownEvent)
     }
     
     public func stateWithValue(value: StateType) -> State<StateType>? {
@@ -103,19 +113,21 @@ public class StateMachine<StateType:Hashable> {
 
 private extension StateMachine {
     
-    func _canFireEvent(event: Event<StateType>) -> Bool {
+    func _canFireEvent(event: Event<StateType>) -> (canFire: Bool, error: Errors.Transition?) {
         if !contains(events, event) {
-            return false
+            return (false,Errors.Transition.UnknownEvent)
         }
         if contains(event.sourceStates, currentState.value) {
-            return true
+                return (true,nil)
         }
-        return false
+        return (false,Errors.Transition.WrongSourceState)
     }
     
     func _fireEventNamed(eventName: String) -> Transition<StateType> {
         if let event = eventWithName(eventName) {
-            if canFireEvent(event) {
+            let possibleTransition = canFireEvent(event)
+            switch possibleTransition {
+            case (true, _):
                 if let shouldBlock = event.shouldFireEvent {
                     if shouldBlock(event: event) {
                         let sourceState = self.currentState
@@ -136,10 +148,11 @@ private extension StateMachine {
                     event.didFireEvent?(event: event)
                     return Transition.Success(sourceState, self.currentState)
                 }
-            }
-            else {
+            case (false, let error):
                 return Transition.Error(NSError(domain: Errors.stateMachineDomain,
-                    code:Errors.Transition.InvalidTransition.rawValue,userInfo: nil))
+                    code:error!.rawValue,userInfo: nil))
+            default:
+                fatalError("Unknown transition error")
             }
         }
         else {

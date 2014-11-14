@@ -38,16 +38,16 @@ inboxMachine.addEvents([viewMessage,deleteMessage,markUnread])
 
 inboxMachine.isInState("Unread") // Yes
 
-let viewTransition = inboxMachine.fireEventNamed("View message")
+let viewTransition = inboxMachine.fireEvent("View message")
 if viewTransition.successful { println("Viewed message") }
 
-let deleteTransition = inboxMachine.fireEventNamed("Delete message")
+let deleteTransition = inboxMachine.fireEvent("Delete message")
 if deleteTransition.successful { println("Deleted") }
 
-let markUnreadTransition = inboxMachine.fireEventNamed("Mark as unread")
+let markUnreadTransition = inboxMachine.fireEvent("Mark as unread")
 if markUnreadTransition.successful { println("Marked as unread") }
 
 inboxMachine.canFireEvent("Mark as unread") // No
 
-let unreadTransition2 = inboxMachine.fireEventNamed("Mark as unread")
+let unreadTransition2 = inboxMachine.fireEvent("Mark as unread")
 if !unreadTransition2.successful { println("Can't unread already unread message") }
