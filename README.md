@@ -70,7 +70,7 @@ Adding events implicitly checks, whether event source states and destination sta
 
 ```swift
   machine.addEvent(event)
-  machine.addevents([event1,event2])
+  machine.addEvents([event1,event2])
 ```
 
 Can event be fired?
