@@ -37,7 +37,7 @@ turnstile.isInState(.Unlocked) // true
 
 ### States
 
-Due to generic implementation, you can have StateMachine of any type you want. The only requirement for state values is they should be `Hashable`. So, you can have State<Int>, or State<String> etc. Or have value of enum, like it's shown in example.
+Due to generic implementation, you can have StateMachine of any type you want. The only requirement for state values is they should be `Hashable`. So, you can have Int State, or String State etc. Or have value of enum, like it's shown in example.
 
 ```swift
 let intState = State(0)
