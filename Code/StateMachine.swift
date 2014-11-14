@@ -5,15 +5,47 @@
 //  Created by Denys Telezhkin on 14.10.14.
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 import Foundation
 
 public struct Errors {
     public static let stateMachineDomain = "com.DenHeadless.StateMachine"
     
+    /**
+        Enum with possible transition errors. These are meant to be used inside fireEvent method on StateMachine. They will be included as status codes inside NSError, that Transition.Error enum returns.
+    */
     public enum Transition: Int {
+        
+        /**
+            When event's shouldFireEvent closure returns false, `TransitionDeclined` error will be returned as a status code inside NSError object.
+        */
         case TransitionDeclined
+        
+        /**
+            `UnknownEvent` means there's no such event on `StateMachine`.
+        */
         case UnknownEvent
+        
+        /**
+            `WrongSourceState` means, that source states for this fired event do not include state, in which StateMachine is currently in.
+        */
         case WrongSourceState
     }
 }
@@ -44,10 +76,16 @@ public class StateMachine<StateType:Hashable> {
         self.availableStates.extend(states)
     }
     
+    /**
+        Activate state, if it's present in `StateMachine`. This method is not tied to events, present in StateMachine.
+    */
     public func activateState(stateValue: StateType) {
         self._activateState(stateValue)
     }
     
+    /**
+        If state is present in available states in `StateMachine`, this method will return true. This method does not check events on `StateMachine`.
+    */
     public func isStateAvailable(stateValue: StateType) -> Bool {
         return _isStateAvailable(stateValue)
     }
@@ -60,10 +98,16 @@ public class StateMachine<StateType:Hashable> {
         availableStates.extend(states)
     }
     
+    /**
+        Add event to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added, and this method will return false.
+    */
     public func addEvent(event: Event<StateType>) -> Bool {
         return self._addEvent(event)
     }
     
+    /**
+    Add events to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added.
+    */
     public func addEvents(events: [Event<StateType>]) {
         for event in events
         {
@@ -74,10 +118,22 @@ public class StateMachine<StateType:Hashable> {
         }
     }
     
+    /**
+        Fires event. Several checks are made along the way:
+    
+        1. Event is present in StateMachine. If not - error includes UnknownEvent transition error
+        2. Event source states include current StateMachine state. If not - error includes WrongSourceState transition error
+        3. Event shouldFireEvent closure is fired. If it returned false - error includes TransitionDeclined transition error.
+    
+        If all conditions passed, event is fired, all closures are fired, and StateMachine changes it's state to event.destinationState.
+    */
     public func fireEvent(event: Event<StateType>) -> Transition<StateType> {
         return _fireEventNamed(event.name)
     }
     
+    /**
+        This method is a convenience shortcut to fireEvent(event: Event<StateType>) method above.
+    */
     public func fireEvent(eventName: String) -> Transition<StateType> {
         return _fireEventNamed(eventName)
     }
@@ -86,6 +142,11 @@ public class StateMachine<StateType:Hashable> {
         return _canFireEvent(event)
     }
     
+    /**
+        This method checks all conditions mentioned in fireEvent method, and returns tuple.
+    
+        If first value of tuple is true, then event can be fired, if false - second parameter will include reason why event cannot be fired.
+    */
     public func canFireEvent(eventName: String) -> (canFire: Bool, error: Errors.Transition?) {
         if let event = eventWithName(eventName)
         {
