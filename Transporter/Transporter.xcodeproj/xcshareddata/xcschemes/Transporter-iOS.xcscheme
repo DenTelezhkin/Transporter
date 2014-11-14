@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
                BuildableName = "Transporter.framework"
-               BlueprintName = "Transporter"
+               BlueprintName = "Transporter-iOS"
                ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
+               BuildableName = "Tests-iOS.xctest"
+               BlueprintName = "Tests-iOS"
                ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
             BuildableName = "Transporter.framework"
-            BlueprintName = "Transporter"
+            BlueprintName = "Transporter-iOS"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
             BuildableName = "Transporter.framework"
-            BlueprintName = "Transporter"
+            BlueprintName = "Transporter-iOS"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
             BuildableName = "Transporter.framework"
-            BlueprintName = "Transporter"
+            BlueprintName = "Transporter-iOS"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -26,9 +26,9 @@ public enum Transition<StateType:Hashable> {
 
 public class Event<StateType:Hashable> {
     
-    let name : String
-    let sourceStates: [StateType]
-    let destinationState: StateType
+    public let name : String
+    public let sourceStates: [StateType]
+    public let destinationState: StateType
     
     public var shouldFireEvent: ( (event : Event) -> Bool )?
     public var willFireEvent:   ( (event : Event) -> Void )?

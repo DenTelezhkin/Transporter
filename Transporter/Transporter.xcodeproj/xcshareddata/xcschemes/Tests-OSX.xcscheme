@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-               BuildableName = "Example.app"
-               BlueprintName = "Example"
+               BlueprintIdentifier = "9A35270E1A1601770006AB0F"
+               BuildableName = "Tests-OSX.xctest"
+               BlueprintName = "Tests-OSX"
                ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,13 +28,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9A35270E1A1601770006AB0F"
+               BuildableName = "Tests-OSX.xctest"
+               BlueprintName = "Tests-OSX"
+               ReferencedContainer = "container:Transporter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BlueprintIdentifier = "9A35270E1A1601770006AB0F"
+            BuildableName = "Tests-OSX.xctest"
+            BlueprintName = "Tests-OSX"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -48,15 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BlueprintIdentifier = "9A35270E1A1601770006AB0F"
+            BuildableName = "Tests-OSX.xctest"
+            BlueprintName = "Tests-OSX"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -66,15 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BlueprintIdentifier = "9A35270E1A1601770006AB0F"
+            BuildableName = "Tests-OSX.xctest"
+            BlueprintName = "Tests-OSX"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
