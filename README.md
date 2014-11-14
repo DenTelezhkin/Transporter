@@ -14,19 +14,19 @@ Transporter is a modern finite-state machine implemented in pure Swift.
 ### Classic turnstile example
 
 ```swift
-enum TurnStile {
+enum Turnstile {
     case Locked
     case Unlocked
 }
 
-let locked = State(TurnStile.Locked)
-let unlocked = State(TurnStile.Unlocked)
+let locked = State(Turnstile.Locked)
+let unlocked = State(Turnstile.Unlocked)
 
 locked.didEnterState = { _ in lockEntrance() }
 unlocked.didEnterState = { _ in unlockEntrance() }
 
-let coinEvent = Event(name: "Coin", sourceStates: [TurnStile.Locked], destinationState: TurnStile.Unlocked)
-let pushEvent = Event(name: "Push", sourceStates: [TurnStile.Unlocked], destinationState: TurnStile.Locked)
+let coinEvent = Event(name: "Coin", sourceStates: [Turnstile.Locked], destinationState: Turnstile.Unlocked)
+let pushEvent = Event(name: "Push", sourceStates: [Turnstile.Unlocked], destinationState: Turnstile.Locked)
 
 let turnstile = StateMachine(initialState: locked, states: unlocked)
 turnstile.addEvents([coinEvent,pushEvent])
