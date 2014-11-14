@@ -6,12 +6,12 @@ namespace :test do
 
   desc "Run Transporter Tests for iOS"
   task :ios do
-    $ios_success = system("xcodebuild test -scheme 'Tests-iOS' -workspace #{workspace_file} -destination 'name=iPhone 5s' | xcpretty -tc; exit ${PIPESTATUS[0]}")
+    $ios_success = system("xcodebuild clean test -scheme 'Tests-iOS' -workspace #{workspace_file} -destination 'name=iPhone 5s' | xcpretty -tc; exit ${PIPESTATUS[0]}")
   end
 
   desc "Run Transporter Tests for Mac OS X"
   task :osx do
-    $osx_success = system("xcodebuild test -scheme 'Tests-OSX' -workspace #{workspace_file} | xcpretty -tc; exit ${PIPESTATUS[0]}")
+    $osx_success = system("xcodebuild clean test -scheme 'Tests-OSX' -workspace #{workspace_file} | xcpretty -tc; exit ${PIPESTATUS[0]}")
   end
 end
 
