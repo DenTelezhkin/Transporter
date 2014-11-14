@@ -32,7 +32,7 @@ let turnstile = StateMachine(initialState: locked, states: unlocked)
 turnstile.addEvents([coinEvent,pushEvent])
 
 turnstile.fireEvent("Coin")
-turnstile.isInState(.Unlocked)
+turnstile.isInState(.Unlocked) // true
 ```
 
 ### States
