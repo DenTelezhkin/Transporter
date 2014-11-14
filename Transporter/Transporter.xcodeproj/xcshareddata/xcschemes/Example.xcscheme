@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
-               BuildableName = "Transporter.framework"
-               BlueprintName = "Transporter"
+               BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
+               BuildableName = "Example.app"
+               BlueprintName = "Example"
                ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,23 +28,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
-               ReferencedContainer = "container:Transporter.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
-            BuildableName = "Transporter.framework"
-            BlueprintName = "Transporter"
+            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -58,15 +48,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
-            BuildableName = "Transporter.framework"
-            BlueprintName = "Transporter"
+            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -76,15 +66,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9AA3C8651A14F11600D68CC3"
-            BuildableName = "Transporter.framework"
-            BlueprintName = "Transporter"
+            BlueprintIdentifier = "9AC8C9EE1969BBB5006F1EAC"
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

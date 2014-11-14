@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct Errors {
-    static let stateMachinedDomain = "com.DenHeadless.StateMachine"
+public struct Errors {
+    public static let stateMachineDomain = "com.DenHeadless.StateMachine"
     
-    enum Transition: Int {
+    public enum Transition: Int {
         case InvalidTransition
         case TransitionDeclined
         case UnknownEvent
     }
 }
 
-class StateMachine<StateType:Hashable> {
+public class StateMachine<StateType:Hashable> {
     
     var initialState: State<StateType>?
     
@@ -26,39 +26,39 @@ class StateMachine<StateType:Hashable> {
     private lazy var availableStates : [State<StateType>] = []
     private lazy var events : [Event<StateType>] = []
     
-    required init(initialState: State<StateType>)
+    required public init(initialState: State<StateType>)
     {
         self.initialState = initialState
         self.currentState = initialState
         availableStates.append(initialState)
     }
     
-    convenience init(initialStateName: StateType)
+    convenience public init(initialStateName: StateType)
     {
         self.init(initialState:State(initialStateName))
     }
     
-    func activateState(stateValue: StateType) {
+    public func activateState(stateValue: StateType) {
         self._activateState(stateValue)
     }
     
-    func isStateAvailable(stateValue: StateType) -> Bool {
+    public func isStateAvailable(stateValue: StateType) -> Bool {
         return _isStateAvailable(stateValue)
     }
     
-    func addState(state: State<StateType>) {
+    public func addState(state: State<StateType>) {
         availableStates.append(state)
     }
     
-    func addStates(states: [State<StateType>]) {
+    public func addStates(states: [State<StateType>]) {
         availableStates.extend(states)
     }
     
-    func addEvent(event: Event<StateType>) -> Bool {
+    public func addEvent(event: Event<StateType>) -> Bool {
         return self._addEvent(event)
     }
     
-    func addEvents(events: [Event<StateType>]) {
+    public func addEvents(events: [Event<StateType>]) {
         for event in events
         {
             let addingEvent = self.addEvent(event)
@@ -68,15 +68,15 @@ class StateMachine<StateType:Hashable> {
         }
     }
     
-    func fireEventNamed(eventName: String) -> Transition<StateType> {
+    public func fireEventNamed(eventName: String) -> Transition<StateType> {
         return _fireEventNamed(eventName)
     }
     
-    func canFireEvent(event: Event<StateType>) -> Bool{
+    public func canFireEvent(event: Event<StateType>) -> Bool{
         return _canFireEvent(event)
     }
     
-    func canFireEvent(eventName: String) -> Bool {
+    public func canFireEvent(eventName: String) -> Bool {
         if let event = eventWithName(eventName)
         {
            return _canFireEvent(event)
@@ -84,19 +84,19 @@ class StateMachine<StateType:Hashable> {
         return false
     }
     
-    func stateWithValue(value: StateType) -> State<StateType>? {
+    public func stateWithValue(value: StateType) -> State<StateType>? {
         return availableStates.filter { (element) -> Bool in
             return element.value == value
         }.first
     }
     
-    func eventWithName(name: String) -> Event<StateType>? {
+    public func eventWithName(name: String) -> Event<StateType>? {
         return events.filter { (element) -> Bool in
             return element.name == name
         }.first
     }
     
-    func isInState(stateValue: StateType) -> Bool {
+    public func isInState(stateValue: StateType) -> Bool {
         return stateValue == currentState.value
     }
 }
@@ -125,7 +125,7 @@ private extension StateMachine {
                         return Transition.Success(sourceState, self.currentState)
                     }
                     else {
-                        return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                        return Transition.Error(NSError(domain: Errors.stateMachineDomain,
                             code: Errors.Transition.TransitionDeclined.rawValue, userInfo: nil))
                     }
                 }
@@ -138,12 +138,12 @@ private extension StateMachine {
                 }
             }
             else {
-                return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+                return Transition.Error(NSError(domain: Errors.stateMachineDomain,
                     code:Errors.Transition.InvalidTransition.rawValue,userInfo: nil))
             }
         }
         else {
-            return Transition.Error(NSError(domain: Errors.stateMachinedDomain,
+            return Transition.Error(NSError(domain: Errors.stateMachineDomain,
                 code: Errors.Transition.UnknownEvent.rawValue, userInfo: nil))
         }
     }

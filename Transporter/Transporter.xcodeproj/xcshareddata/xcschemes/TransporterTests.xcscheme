@@ -15,8 +15,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-               BuildableName = "TransporterTests.xctest"
-               BlueprintName = "TransporterTests"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:Transporter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9AA3C86F1A14F11600D68CC3"
+               BuildableName = "Transporter.frameworkTests.xctest"
+               BlueprintName = "Transporter.frameworkTests"
                ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +47,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-               BuildableName = "TransporterTests.xctest"
-               BlueprintName = "TransporterTests"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:Transporter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9AA3C86F1A14F11600D68CC3"
+               BuildableName = "Transporter.frameworkTests.xctest"
+               BlueprintName = "Transporter.frameworkTests"
                ReferencedContainer = "container:Transporter.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-            BuildableName = "TransporterTests.xctest"
-            BlueprintName = "TransporterTests"
+            BuildableName = "Tests.xctest"
+            BlueprintName = "Tests"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +86,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-            BuildableName = "TransporterTests.xctest"
-            BlueprintName = "TransporterTests"
+            BuildableName = "Tests.xctest"
+            BlueprintName = "Tests"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,8 +104,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9AC8C9FB1969BBB5006F1EAC"
-            BuildableName = "TransporterTests.xctest"
-            BlueprintName = "TransporterTests"
+            BuildableName = "Tests.xctest"
+            BlueprintName = "Tests"
             ReferencedContainer = "container:Transporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

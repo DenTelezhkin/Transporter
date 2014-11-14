@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import UIKit
 
-class State <StateType:Hashable>  {
+public class State <StateType:Hashable>  {
     
-    let value : StateType
+    public let value : StateType
     
-    var willEnterState: ( (enteringState : State<StateType> ) -> Void)?
-    var didEnterState:  ( (enteringState : State<StateType> ) -> Void)?
-    var willExitState:  ( (exitingState  : State<StateType> ) -> Void)?
-    var didExitState:   ( (exitingState  : State<StateType> ) -> Void)?
+    public var willEnterState: ( (enteringState : State<StateType> ) -> Void)?
+    public var didEnterState:  ( (enteringState : State<StateType> ) -> Void)?
+    public var willExitState:  ( (exitingState  : State<StateType> ) -> Void)?
+    public var didExitState:   ( (exitingState  : State<StateType> ) -> Void)?
     
-    init(_ value: StateType) {
+    public init(_ value: StateType) {
         self.value = value
     }
 }

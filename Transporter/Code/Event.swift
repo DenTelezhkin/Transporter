@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Denys Telezhkin. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-enum Transition<StateType:Hashable> {
+public enum Transition<StateType:Hashable> {
     
-    var successful: Bool {
+    public var successful: Bool {
         switch self {
             case .Success(_,_):
                 return true
@@ -24,17 +24,17 @@ enum Transition<StateType:Hashable> {
     case Error(NSError)
 }
 
-class Event<StateType:Hashable> {
+public class Event<StateType:Hashable> {
     
     let name : String
     let sourceStates: [StateType]
     let destinationState: StateType
     
-    var shouldFireEvent: ( (event : Event) -> Bool )?
-    var willFireEvent:   ( (event : Event) -> Void )?
-    var didFireEvent:    ( (event : Event) -> Void )?
+    public var shouldFireEvent: ( (event : Event) -> Bool )?
+    public var willFireEvent:   ( (event : Event) -> Void )?
+    public var didFireEvent:    ( (event : Event) -> Void )?
     
-    required init(name: String, sourceStates sources: [StateType], destinationState destination: StateType) {
+    required public init(name: String, sourceStates sources: [StateType], destinationState destination: StateType) {
         self.name = name
         self.sourceStates = sources
         self.destinationState = destination
@@ -43,6 +43,6 @@ class Event<StateType:Hashable> {
 
 extension Event: Equatable {}
 
-func ==<StateType>(lhs:Event<StateType>,rhs:Event<StateType>) -> Bool {
+public func ==<StateType>(lhs:Event<StateType>,rhs:Event<StateType>) -> Bool {
     return lhs.name == rhs.name
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import Transporter
 
 enum StateEnum {
     case Start

@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import Transporter
 
 class NumberTests: XCTestCase {
 
@@ -95,6 +96,7 @@ class StringTests: XCTestCase {
             XCTFail("success should not be fired")
         case .Error(let error):
             XCTAssert(error.code == Errors.Transition.TransitionDeclined.rawValue)
+            XCTAssert(error.domain == Errors.stateMachineDomain)
         }
     }
     

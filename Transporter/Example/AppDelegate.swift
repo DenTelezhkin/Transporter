@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Transporter
+
+enum TurnStile {
+    case Locked
+    case Unlocked
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
+        // Turnstile example
+        
+        let locked = State(TurnStile.Locked)
+        let unlocked = State(TurnStile.Unlocked)
+        
+        locked.didEnterState = { _ in self.lockEntrance() }
+        unlocked.didEnterState = { _ in self.unlockEntrance() }
+        
+        let turnstile = StateMachine(initialState: locked)
+        turnstile.addState(unlocked)
+        
+        let coinEvent = Event(name: "Coin", sourceStates: [TurnStile.Locked], destinationState: TurnStile.Unlocked)
+        let pushEvent = Event(name: "Push", sourceStates: [TurnStile.Unlocked], destinationState: TurnStile.Locked)
+        
+        turnstile.addEvents([coinEvent,pushEvent])
         
         // Blake Watters TransitionKit example https://github.com/blakewatters/TransitionKit
         
@@ -53,6 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !unreadTransition2.successful { println("Can't unread already unread message") }
         
         return true
+    }
+    
+    func lockEntrance() {
+        println("locked")
+    }
+    
+    func unlockEntrance() {
+        println("unlocked")
     }
     
     func incrementUnreadCount() {

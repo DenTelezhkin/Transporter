@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Transporter
 
 class StateTests: XCTestCase {
 
