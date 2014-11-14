@@ -134,7 +134,7 @@ private extension StateMachine {
                         event.willFireEvent?(event: event)
                         activateState(event.destinationState)
                         event.didFireEvent?(event: event)
-                        return Transition.Success(sourceState, self.currentState)
+                        return Transition.Success(sourceState: sourceState, destinationState: self.currentState)
                     }
                     else {
                         return Transition.Error(NSError(domain: Errors.stateMachineDomain,
@@ -146,7 +146,7 @@ private extension StateMachine {
                     event.willFireEvent?(event: event)
                     activateState(event.destinationState)
                     event.didFireEvent?(event: event)
-                    return Transition.Success(sourceState, self.currentState)
+                    return Transition.Success(sourceState: sourceState, destinationState: self.currentState)
                 }
             case (false, let error):
                 return Transition.Error(NSError(domain: Errors.stateMachineDomain,

@@ -20,7 +20,7 @@ public enum Transition<StateType:Hashable> {
         }
     }
     
-    case Success(State<StateType>, State<StateType>)
+    case Success(sourceState: State<StateType>, destinationState: State<StateType>)
     case Error(NSError)
 }
 

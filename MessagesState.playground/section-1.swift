@@ -26,8 +26,7 @@ read.didExitState = { state in decrementUnreadCount() }
 let deleted = State("Deleted")
 deleted.didEnterState = { state in moveMessageToTrash() }
 
-let inboxMachine = StateMachine(initialState: unread)
-inboxMachine.addStates([read, deleted])
+let inboxMachine = StateMachine(initialState: unread, states: [read,deleted])
 
 let viewMessage = Event(name: "View message", sourceStates: ["Unread"],
     destinationState: "Read")
