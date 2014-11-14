@@ -8,7 +8,7 @@ Transporter is a modern finite-state machine implemented in pure Swift.
 * Simple mode, allowing to manually switch states
 * Strict mode, allowing switching states only with Events and proper Transition
 * Closure(block)-based callbacks on states and events
-* Generic implementation allows using any State values you need
+* Generic implementation allows using any State values 
 * Unit-tested and reliable
 
 ### Classic turnstile example
