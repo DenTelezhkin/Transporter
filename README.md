@@ -122,9 +122,11 @@ Due to generic implementation of Transporter, it will not support Objective-C. I
 
 ### Installation
 
-CocoaPods - iOS 8 and higher
+#### CocoaPods
 
-If you prefer using git submodule:
+* iOS 8 and higher
+
+#### Git submodules
 
 * iOS 7 and higher - consider adding source files directly to the project, because XCode does not support using embedded frameworks for iOS 7
 * iOS 8 and higher - you can use embedded Transporter.framework, that builds from Transporter.xcodeproj. It also builds Mac OS X framework.
