@@ -1,4 +1,5 @@
 ![Build Status](https://travis-ci.org/DenHeadless/Transporter.png?branch=master) &nbsp;
+![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/Transporter/badge.png) &nbsp; 
 ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 Transporter 
 ==================
