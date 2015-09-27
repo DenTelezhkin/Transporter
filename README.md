@@ -1,5 +1,6 @@
 ![Build Status](https://travis-ci.org/DenHeadless/Transporter.png?branch=master) &nbsp;
 [![codecov.io](http://codecov.io/github/DenHeadless/Transporter/coverage.svg?branch=master)](http://codecov.io/github/DenHeadless/Transporter?branch=master)
+![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/Transporter/badge.png) &nbsp;
 ![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/Transporter/badge.png) &nbsp;
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
