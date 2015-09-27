@@ -1,17 +1,19 @@
 ![Build Status](https://travis-ci.org/DenHeadless/Transporter.png?branch=master) &nbsp;
-![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/Transporter/badge.png) &nbsp; 
+[![codecov.io](http://codecov.io/github/DenHeadless/Transporter/coverage.svg?branch=master)](http://codecov.io/github/DenHeadless/Transporter?branch=master)
+![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/Transporter/badge.png) &nbsp;
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
-Transporter 
+Transporter
 ==================
 
-Transporter is a modern finite-state machine implemented in pure Swift. 
+Transporter is a modern finite-state machine implemented in pure Swift.
 
 ### Features
 
 * Simple mode, allowing to manually switch states
 * Strict mode, allowing switching states only with Events and proper Transition
 * Closure(block)-based callbacks on states and events
-* Generic implementation allows using any State values 
+* Generic implementation allows using any State values
 * Unit-tested and reliable
 
 ### Classic turnstile example
@@ -48,7 +50,7 @@ let stringState = State("foo")
 let enumState = State(Turnstile.Locked)
 ```
 
-Getting states 
+Getting states
 
 ```swift
   let state = machine.stateWithValue(4)
@@ -106,29 +108,31 @@ Transporter supports canonic finite state machine principle, that disallows tran
   let initial = State("Initial")
   let machine = StateMachine(initialState: initial)
   machine.addState(State("Finished"))
-  
+
   machine.activateState("Finished")
   machine.isInState("Finished") // true
 ```
 
 ### Objective-C
 
-Due to generic implementation of Transporter, it will not support Objective-C. If you are looking for state machine, written in Objective-C, i recommend great [TransitionKit](https://github.com/blakewatters/TransitionKit) library by Blake Watters. 
+Due to generic implementation of Transporter, it will not support Objective-C. If you are looking for state machine, written in Objective-C, i recommend great [TransitionKit](https://github.com/blakewatters/TransitionKit) library by Blake Watters.
 
 ### Requirements
 
-* iOS 7,8 or Mac OS X Mavericks and higher
-* Swift
-* XCode 6.1
+* iOS 8 / Mac OS 10.10
+* Swift 2
+* XCode 7
 
 ### Installation
 
 #### CocoaPods
 
-* iOS 8 and higher
+```ruby
+  pod 'Transporter', '~> 1.1.0'
+```
 
-#### Git submodules
+#### Carthage
 
-* iOS 7 and higher - consider adding source files directly to the project, because XCode does not support using embedded frameworks for iOS 7
-* iOS 8 and higher - you can use embedded Transporter.framework, that builds from Transporter.xcodeproj. It also builds Mac OS X framework.
-
+```ruby
+  carthage 'DenHeadless/Transporter'
+```
