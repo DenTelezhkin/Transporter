@@ -149,7 +149,7 @@ class StringTests: XCTestCase {
         }
         machine.addEvent(event)
         
-        var transition = machine.fireEvent("Pass")
+        _ = machine.fireEvent("Pass")
         XCTAssert(foo == 7)
     }
     
@@ -162,7 +162,7 @@ class StringTests: XCTestCase {
         }
         machine.addEvent(event)
         
-        let transition = machine.fireEvent("Pass")
+        _ = machine.fireEvent("Pass")
         XCTAssert(foo == 7)
     }
 }

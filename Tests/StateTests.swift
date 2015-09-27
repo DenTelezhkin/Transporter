@@ -12,8 +12,8 @@ import Transporter
 class StateTests: XCTestCase {
 
     func testNumberEqualStates() {
-        var state = State(6)
-        var state2 = State(5+1)
+        let state = State(6)
+        let state2 = State(5+1)
         
         XCTAssert(state.value == state2.value)
     }

@@ -50,70 +50,108 @@ public struct Errors {
     }
 }
 
-public class StateMachine<StateType:Hashable> {
+public class StateMachine<T:Hashable> {
     
-    var initialState: State<StateType>?
+    var initialState: State<T>?
     
-    private var currentState : State<StateType>
-    private lazy var availableStates : [State<StateType>] = []
-    private lazy var events : [Event<StateType>] = []
+    private var currentState : State<T>
+    private lazy var availableStates : [State<T>] = []
+    private lazy var events : [Event<T>] = []
     
-    required public init(initialState: State<StateType>)
+    required public init(initialState: State<T>)
     {
         self.initialState = initialState
         self.currentState = initialState
         availableStates.append(initialState)
     }
     
-    convenience public init(initialStateName: StateType)
+    convenience public init(initialStateName: T)
     {
         self.init(initialState:State(initialStateName))
     }
     
-    convenience public init(initialState: State<StateType>, states: [State<StateType>])
+    convenience public init(initialState: State<T>, states: [State<T>])
     {
         self.init(initialState: initialState)
-        self.availableStates.extend(states)
+        self.availableStates.appendContentsOf(states)
     }
     
     /**
         Activate state, if it's present in `StateMachine`. This method is not tied to events, present in StateMachine.
     */
-    public func activateState(stateValue: StateType) {
-        self._activateState(stateValue)
+    public func activateState(stateValue: T) {
+        if (isStateAvailable(stateValue))
+        {
+            let oldState = currentState
+            let newState = stateWithValue(stateValue)!
+            
+            newState.willEnterState?(enteringState: newState)
+            oldState.willExitState?(exitingState: oldState)
+            
+            currentState = newState
+            
+            oldState.didExitState?(exitingState: oldState)
+            newState.didEnterState?(enteringState: currentState)
+        }
     }
     
     /**
         If state is present in available states in `StateMachine`, this method will return true. This method does not check events on `StateMachine`.
     */
-    public func isStateAvailable(stateValue: StateType) -> Bool {
-        return _isStateAvailable(stateValue)
+    public func isStateAvailable(stateValue: T) -> Bool {
+        let states = availableStates.filter { (element) -> Bool in
+            return element.value == stateValue
+        }
+        if !states.isEmpty {
+            return true
+        }
+        return false
     }
     
-    public func addState(state: State<StateType>) {
+    public func addState(state: State<T>) {
         availableStates.append(state)
     }
     
-    public func addStates(states: [State<StateType>]) {
-        availableStates.extend(states)
+    public func addStates(states: [State<T>]) {
+        availableStates.appendContentsOf(states)
     }
     
     /**
         Add event to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added, and this method will return false.
     */
-    public func addEvent(event: Event<StateType>) -> Bool {
-        return self._addEvent(event)
+    public func addEvent(event: Event<T>) -> Bool {
+        if event.sourceStates.isEmpty
+        {
+            _printMessage("Source states array is empty, when trying to add event.")
+            return false
+        }
+        
+        for state in event.sourceStates
+        {
+            if (self.stateWithValue(state) == nil)
+            {
+                _printMessage("Source state with value \(state) is not present")
+                return false
+            }
+        }
+        if (self.stateWithValue(event.destinationState) == nil) {
+            _printMessage("Destination state with value: \(event.destinationState)) does not exist")
+            return false
+        }
+        
+        self.events.append(event)
+        return true
     }
     
     /**
     Add events to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added.
     */
-    public func addEvents(events: [Event<StateType>]) {
+    public func addEvents(events: [Event<T>]) {
         for event in events
         {
             let addingEvent = self.addEvent(event)
             if addingEvent == false {
-                println("failed adding event with name: %@",event.name)
+                print("failed adding event with name: %@",event.name)
             }
         }
     }
@@ -127,19 +165,25 @@ public class StateMachine<StateType:Hashable> {
     
         If all conditions passed, event is fired, all closures are fired, and StateMachine changes it's state to event.destinationState.
     */
-    public func fireEvent(event: Event<StateType>) -> Transition<StateType> {
+    public func fireEvent(event: Event<T>) -> Transition<T> {
         return _fireEventNamed(event.name)
     }
     
     /**
         This method is a convenience shortcut to fireEvent(event: Event<StateType>) method above.
     */
-    public func fireEvent(eventName: String) -> Transition<StateType> {
+    public func fireEvent(eventName: String) -> Transition<T> {
         return _fireEventNamed(eventName)
     }
     
-    public func canFireEvent(event: Event<StateType>) -> (canFire: Bool, error: Errors.Transition?) {
-        return _canFireEvent(event)
+    public func canFireEvent(event: Event<T>) -> (canFire: Bool, error: Errors.Transition?) {
+        if !events.contains(event) {
+            return (false,Errors.Transition.UnknownEvent)
+        }
+        if event.sourceStates.contains(currentState.value) {
+            return (true,nil)
+        }
+        return (false,Errors.Transition.WrongSourceState)
     }
     
     /**
@@ -150,41 +194,31 @@ public class StateMachine<StateType:Hashable> {
     public func canFireEvent(eventName: String) -> (canFire: Bool, error: Errors.Transition?) {
         if let event = eventWithName(eventName)
         {
-           return _canFireEvent(event)
+           return canFireEvent(event)
         }
         return (false, Errors.Transition.UnknownEvent)
     }
     
-    public func stateWithValue(value: StateType) -> State<StateType>? {
+    public func stateWithValue(value: T) -> State<T>? {
         return availableStates.filter { (element) -> Bool in
             return element.value == value
         }.first
     }
     
-    public func eventWithName(name: String) -> Event<StateType>? {
+    public func eventWithName(name: String) -> Event<T>? {
         return events.filter { (element) -> Bool in
             return element.name == name
         }.first
     }
     
-    public func isInState(stateValue: StateType) -> Bool {
+    public func isInState(stateValue: T) -> Bool {
         return stateValue == currentState.value
     }
 }
 
 private extension StateMachine {
     
-    func _canFireEvent(event: Event<StateType>) -> (canFire: Bool, error: Errors.Transition?) {
-        if !contains(events, event) {
-            return (false,Errors.Transition.UnknownEvent)
-        }
-        if contains(event.sourceStates, currentState.value) {
-                return (true,nil)
-        }
-        return (false,Errors.Transition.WrongSourceState)
-    }
-    
-    func _fireEventNamed(eventName: String) -> Transition<StateType> {
+    func _fireEventNamed(eventName: String) -> Transition<T> {
         if let event = eventWithName(eventName) {
             let possibleTransition = canFireEvent(event)
             switch possibleTransition {
@@ -212,8 +246,6 @@ private extension StateMachine {
             case (false, let error):
                 return Transition.Error(NSError(domain: Errors.stateMachineDomain,
                     code:error!.rawValue,userInfo: nil))
-            default:
-                fatalError("Unknown transition error")
             }
         }
         else {
@@ -223,57 +255,6 @@ private extension StateMachine {
     }
     
     func _printMessage(message: String) {
-        println("StateMachine: %@",message)
-    }
-    
-    // private
-    func _isStateAvailable(stateValue: StateType) -> Bool {
-        let states = availableStates.filter { (element) -> Bool in
-            return element.value == stateValue
-        }
-        if !states.isEmpty {
-            return true
-        }
-        return false
-    }
-    
-    func _activateState(stateValue: StateType) {
-        if (isStateAvailable(stateValue))
-        {
-            let oldState = currentState
-            let newState = stateWithValue(stateValue)!
-            
-            newState.willEnterState?(enteringState: newState)
-            oldState.willExitState?(exitingState: oldState)
-            
-            currentState = newState
-            
-            oldState.didExitState?(exitingState: oldState)
-            newState.didEnterState?(enteringState: currentState)
-        }
-    }
-    
-    func _addEvent(event: Event<StateType>) -> Bool {
-        if event.sourceStates.isEmpty
-        {
-            _printMessage("Source states array is empty, when trying to add event.")
-            return false
-        }
-        
-        for state in event.sourceStates
-        {
-            if (self.stateWithValue(state) == nil)
-            {
-                _printMessage("Source state with value \(state) is not present")
-                return false
-            }
-        }
-        if (self.stateWithValue(event.destinationState) == nil) {
-            _printMessage("Destination state with value: \(event.destinationState)) does not exist")
-            return false
-        }
-        
-        self.events.append(event)
-        return true
+        print("StateMachine: %@",message)
     }
 }

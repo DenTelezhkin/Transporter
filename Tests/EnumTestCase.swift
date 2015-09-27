@@ -48,7 +48,6 @@ class EnumTestCase: XCTestCase {
     }
     
     func testFiringEvent() {
-        let array: [StateEnum] = [StateEnum.Start,StateEnum.Progress]
         let event = Event(name: EnumEvents.MakeProgress, sourceStates: [StateEnum.Start,StateEnum.Progress], destinationState: StateEnum.Progress)
         
         machine.addEvent(event)

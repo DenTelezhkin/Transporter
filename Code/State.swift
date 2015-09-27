@@ -28,16 +28,16 @@ import Foundation
 /**
     `State` class encapsulates state with some value, and closure-based callbacks to fire when state machine enters or exits state.
 */
-public class State <StateType:Hashable>  {
+public class State <T:Hashable>  {
     
-    public let value : StateType
+    public let value : T
     
-    public var willEnterState: ( (enteringState : State<StateType> ) -> Void)?
-    public var didEnterState:  ( (enteringState : State<StateType> ) -> Void)?
-    public var willExitState:  ( (exitingState  : State<StateType> ) -> Void)?
-    public var didExitState:   ( (exitingState  : State<StateType> ) -> Void)?
+    public var willEnterState: ( (enteringState : State<T> ) -> Void)?
+    public var didEnterState:  ( (enteringState : State<T> ) -> Void)?
+    public var willExitState:  ( (exitingState  : State<T> ) -> Void)?
+    public var didExitState:   ( (exitingState  : State<T> ) -> Void)?
     
-    public init(_ value: StateType) {
+    public init(_ value: T) {
         self.value = value
     }
 }

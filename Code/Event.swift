@@ -28,7 +28,7 @@ import Foundation
 /**
     Instance of enum is returned from fireEvent method on StateMachine. Use it to determine, whether transition was successful.
 */
-public enum Transition<StateType:Hashable> {
+public enum Transition<T:Hashable> {
     
     /**
         Returns whether transition was successful
@@ -46,7 +46,7 @@ public enum Transition<StateType:Hashable> {
     /**
         Success case with source state, from which transition happened, and destination state, to which state machine switched
     */
-    case Success(sourceState: State<StateType>, destinationState: State<StateType>)
+    case Success(sourceState: State<T>, destinationState: State<T>)
     
     /**
         Error case, containing error. Error domain and status codes are described in Errors struct.
@@ -57,11 +57,11 @@ public enum Transition<StateType:Hashable> {
 /**
     `Event` class encapsulates some event with array of possible source states and one destination state, to which state machine should transition, when this event fires.
 */
-public class Event<StateType:Hashable> {
+public class Event<T:Hashable> {
     
     public let name : String
-    public let sourceStates: [StateType]
-    public let destinationState: StateType
+    public let sourceStates: [T]
+    public let destinationState: T
     
     /**
         If this closure return value is false, event will not be fired
@@ -78,7 +78,7 @@ public class Event<StateType:Hashable> {
     */
     public var didFireEvent:    ( (event : Event) -> Void )?
     
-    required public init(name: String, sourceStates sources: [StateType], destinationState destination: StateType) {
+    required public init(name: String, sourceStates sources: [T], destinationState destination: T) {
         self.name = name
         self.sourceStates = sources
         self.destinationState = destination
@@ -87,6 +87,6 @@ public class Event<StateType:Hashable> {
 
 extension Event: Equatable {}
 
-public func ==<StateType>(lhs:Event<StateType>,rhs:Event<StateType>) -> Bool {
+public func ==<T>(lhs:Event<T>,rhs:Event<T>) -> Bool {
     return lhs.name == rhs.name
 }
