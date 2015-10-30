@@ -129,6 +129,24 @@ class StringTests: XCTestCase {
         }
     }
     
+    func testTransitionSuccessful()
+    {
+        let event = Event(name: "Pass", sourceStates: ["Initial"],destinationState: "Passed")
+        machine.addEvent(event)
+        let transition = machine.fireEvent("Pass")
+        
+        XCTAssert(transition.successful)
+    }
+    
+    func testTransitionFailed()
+    {
+        let event = Event(name: "Pass", sourceStates: ["Initial"],destinationState: "Passed")
+        machine.addEvent(event)
+        let transition = machine.fireEvent("Foo")
+        
+        XCTAssertFalse(transition.successful)
+    }
+    
     func testUnknownEvent() {
         let transition = machine.fireEvent("Foo")
         
