@@ -1,6 +1,5 @@
 // Playground - noun: a place where people can play
 
-import UIKit
 import Transporter
 
 enum Turnstile {
@@ -10,12 +9,12 @@ enum Turnstile {
 
 func lockEntrance()
 {
-    println("locked")
+    print("locked")
 }
 
 func unlockEntrance()
 {
-    println("unlocked")
+    print("unlocked")
 }
 
 let locked = State(Turnstile.Locked)
@@ -27,7 +26,7 @@ unlocked.didEnterState = { _ in unlockEntrance() }
 let coinEvent = Event(name: "Coin", sourceStates: [Turnstile.Locked], destinationState: Turnstile.Unlocked)
 let pushEvent = Event(name: "Push", sourceStates: [Turnstile.Unlocked], destinationState: Turnstile.Locked)
 
-let turnstile = StateMachine(initialState: locked, states: unlocked)
+let turnstile = StateMachine(initialState: locked, states: [unlocked])
 turnstile.addEvents([coinEvent,pushEvent])
 
 turnstile.fireEvent("Coin")

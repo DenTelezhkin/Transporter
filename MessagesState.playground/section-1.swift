@@ -1,20 +1,19 @@
 // Playground - noun: a place where people can play
 
-import UIKit
 import Transporter
 
 // Blake Watters TransitionKit example https://github.com/blakewatters/TransitionKit
 
 func incrementUnreadCount() {
-    println("Increment read count")
+    print("Increment read count")
 }
 
 func decrementUnreadCount() {
-    println("Decrement read count")
+    print("Decrement read count")
 }
 
 func moveMessageToTrash() {
-    println("Move to trash")
+    print("Move to trash")
 }
 
 let unread = State("Unread")
@@ -38,15 +37,15 @@ inboxMachine.addEvents([viewMessage,deleteMessage,markUnread])
 inboxMachine.isInState("Unread") // Yes
 
 let viewTransition = inboxMachine.fireEvent("View message")
-if viewTransition.successful { println("Viewed message") }
+if viewTransition.successful { print("Viewed message") }
 
 let deleteTransition = inboxMachine.fireEvent("Delete message")
-if deleteTransition.successful { println("Deleted") }
+if deleteTransition.successful { print("Deleted") }
 
 let markUnreadTransition = inboxMachine.fireEvent("Mark as unread")
-if markUnreadTransition.successful { println("Marked as unread") }
+if markUnreadTransition.successful { print("Marked as unread") }
 
 inboxMachine.canFireEvent("Mark as unread") // No
 
 let unreadTransition2 = inboxMachine.fireEvent("Mark as unread")
-if !unreadTransition2.successful { println("Can't unread already unread message") }
+if !unreadTransition2.successful { print("Can't unread already unread message") }

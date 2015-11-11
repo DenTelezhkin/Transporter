@@ -23,8 +23,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
-
 /**
     Instance of enum is returned from fireEvent method on StateMachine. Use it to determine, whether transition was successful.
 */
@@ -51,7 +49,7 @@ public enum Transition<T:Hashable> {
     /**
         Error case, containing error. Error domain and status codes are described in Errors struct.
     */
-    case Error(NSError)
+    case Error(TransitionError)
 }
 
 /**

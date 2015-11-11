@@ -23,31 +23,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
-
-public struct Errors {
-    public static let stateMachineDomain = "com.DenHeadless.StateMachine"
+/**
+Enum with possible transition errors. These are meant to be used inside fireEvent method on StateMachine. They will be included as status codes inside NSError, that Transition.Error enum returns.
+*/
+public enum TransitionError: ErrorType {
+    /**
+        When event's shouldFireEvent closure returns false, `TransitionDeclined` error will be returned as a status code inside NSError object.
+    */
+    case TransitionDeclined
     
     /**
-        Enum with possible transition errors. These are meant to be used inside fireEvent method on StateMachine. They will be included as status codes inside NSError, that Transition.Error enum returns.
+        `UnknownEvent` means there's no such event on `StateMachine`.
     */
-    public enum Transition: Int {
-        
-        /**
-            When event's shouldFireEvent closure returns false, `TransitionDeclined` error will be returned as a status code inside NSError object.
-        */
-        case TransitionDeclined
-        
-        /**
-            `UnknownEvent` means there's no such event on `StateMachine`.
-        */
-        case UnknownEvent
-        
-        /**
-            `WrongSourceState` means, that source states for this fired event do not include state, in which StateMachine is currently in.
-        */
-        case WrongSourceState
-    }
+    case UnknownEvent
+    
+    /**
+        `WrongSourceState` means, that source states for this fired event do not include state, in which StateMachine is currently in.
+    */
+    case WrongSourceState
 }
 
 public class StateMachine<T:Hashable> {
@@ -176,14 +169,14 @@ public class StateMachine<T:Hashable> {
         return _fireEventNamed(eventName)
     }
     
-    public func canFireEvent(event: Event<T>) -> (canFire: Bool, error: Errors.Transition?) {
+    public func canFireEvent(event: Event<T>) -> (canFire: Bool, error: TransitionError?) {
         if !events.contains(event) {
-            return (false,Errors.Transition.UnknownEvent)
+            return (false,.UnknownEvent)
         }
         if event.sourceStates.contains(currentState.value) {
             return (true,nil)
         }
-        return (false,Errors.Transition.WrongSourceState)
+        return (false,.WrongSourceState)
     }
     
     /**
@@ -191,12 +184,12 @@ public class StateMachine<T:Hashable> {
     
         If first value of tuple is true, then event can be fired, if false - second parameter will include reason why event cannot be fired.
     */
-    public func canFireEvent(eventName: String) -> (canFire: Bool, error: Errors.Transition?) {
+    public func canFireEvent(eventName: String) -> (canFire: Bool, error: TransitionError?) {
         if let event = eventWithName(eventName)
         {
            return canFireEvent(event)
         }
-        return (false, Errors.Transition.UnknownEvent)
+        return (false, TransitionError.UnknownEvent)
     }
     
     public func stateWithValue(value: T) -> State<T>? {
@@ -232,8 +225,7 @@ private extension StateMachine {
                         return Transition.Success(sourceState: sourceState, destinationState: self.currentState)
                     }
                     else {
-                        return Transition.Error(NSError(domain: Errors.stateMachineDomain,
-                            code: Errors.Transition.TransitionDeclined.rawValue, userInfo: nil))
+                        return Transition.Error(TransitionError.TransitionDeclined)
                     }
                 }
                 else {
@@ -244,13 +236,11 @@ private extension StateMachine {
                     return Transition.Success(sourceState: sourceState, destinationState: self.currentState)
                 }
             case (false, let error):
-                return Transition.Error(NSError(domain: Errors.stateMachineDomain,
-                    code:error!.rawValue,userInfo: nil))
+                return Transition.Error(error!)
             }
         }
         else {
-            return Transition.Error(NSError(domain: Errors.stateMachineDomain,
-                code: Errors.Transition.UnknownEvent.rawValue, userInfo: nil))
+            return Transition.Error(TransitionError.UnknownEvent)
         }
     }
     

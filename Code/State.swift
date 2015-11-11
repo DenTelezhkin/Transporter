@@ -23,8 +23,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
-
 /**
     `State` class encapsulates state with some value, and closure-based callbacks to fire when state machine enters or exits state.
 */

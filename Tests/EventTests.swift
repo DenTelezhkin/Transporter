@@ -94,8 +94,7 @@ class StringTests: XCTestCase {
         case .Success(_,_):
             XCTFail("success should not be fired")
         case .Error(let error):
-            XCTAssert(error.code == Errors.Transition.TransitionDeclined.rawValue)
-            XCTAssert(error.domain == Errors.stateMachineDomain)
+            XCTAssertEqual(error, TransitionError.TransitionDeclined)
         }
     }
     
@@ -111,7 +110,7 @@ class StringTests: XCTestCase {
         case .Success(_,_):
             XCTFail("success should not be fired")
         case .Error(let error):
-            XCTAssert(error.code == Errors.Transition.WrongSourceState.rawValue)
+            XCTAssertEqual(error, TransitionError.WrongSourceState)
         }
     }
     
@@ -154,7 +153,7 @@ class StringTests: XCTestCase {
         case .Success(_, _):
             XCTFail("Event does not exist and should not be fired")
         case .Error(let error):
-            XCTAssert(error.code == Errors.Transition.UnknownEvent.rawValue)
+            XCTAssertEqual(error, TransitionError.UnknownEvent)
         }
     }
     
