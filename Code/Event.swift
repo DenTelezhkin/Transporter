@@ -57,25 +57,28 @@ public enum Transition<T:Hashable> {
 */
 public class Event<T:Hashable> {
     
+    /// Name of event
     public let name : String
+    
+    /// Array of source values, in which event can be fired
     public let sourceValues: [T]
+    
+    /// Destination value for state, to which state machine will switch after firing event.
     public let destinationValue: T
     
-    /**
-        If this closure return value is false, event will not be fired
-    */
+    ///  If this closure return value is false, event will not be fired
     public var shouldFireEvent: ( (event : Event) -> Bool )?
     
-    /**
-        This closure will be executed before event is fired.
-    */
+    /// This closure will be executed before event is fired.
     public var willFireEvent:   ( (event : Event) -> Void )?
     
-    /**
-        This closure will be executed after event was fired.
-    */
+    /// This closure will be executed after event was fired.
     public var didFireEvent:    ( (event : Event) -> Void )?
     
+    /// Initializer for Event.
+    /// - Parameter name: name of the event
+    /// - Parameter sourceValues: Array of source values, in which event can be fired
+    /// - Parameter destinationValue: Destination state value
     required public init(name: String, sourceValues sources: [T], destinationValue destination: T) {
         self.name = name
         self.sourceValues = sources
@@ -85,6 +88,7 @@ public class Event<T:Hashable> {
 
 extension Event: Equatable {}
 
+/// Returns true, if events have the same name
 public func ==<T>(lhs:Event<T>,rhs:Event<T>) -> Bool {
     return lhs.name == rhs.name
 }

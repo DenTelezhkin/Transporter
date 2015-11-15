@@ -25,7 +25,7 @@ class StateMachineConstructorsTests: XCTestCase {
     
     func testConvenienceInit()
     {
-        let machine = StateMachine(initialStateName: 0)
+        let machine = StateMachine(initialStateValue: 0)
         XCTAssert(machine.isStateAvailable(0))
     }
 }
