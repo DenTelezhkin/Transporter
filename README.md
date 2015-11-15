@@ -120,8 +120,11 @@ Due to generic implementation of Transporter, it will not support Objective-C. I
 
 ### Requirements
 
-* iOS 8 / Mac OS 10.10
-* Swift 2
+* iOS 8 
+* Mac OS 10.10
+* watchOS 2
+* tvOS 9.0
+* Swift 2.1
 * XCode 7
 
 ### Installation
