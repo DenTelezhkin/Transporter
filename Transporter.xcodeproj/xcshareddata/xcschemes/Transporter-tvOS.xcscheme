@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9A4F5FD41BF89BA400E731F4"
+               BuildableName = "Tests-tvOS.xctest"
+               BlueprintName = "Tests-tvOS"
+               ReferencedContainer = "container:Transporter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9A4F5F8E1BF8991300E731F4"
+            BuildableName = "Transporter.framework"
+            BlueprintName = "Transporter-tvOS"
+            ReferencedContainer = "container:Transporter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
