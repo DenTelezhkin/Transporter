@@ -58,8 +58,8 @@ public enum Transition<T:Hashable> {
 public class Event<T:Hashable> {
     
     public let name : String
-    public let sourceStates: [T]
-    public let destinationState: T
+    public let sourceValues: [T]
+    public let destinationValue: T
     
     /**
         If this closure return value is false, event will not be fired
@@ -76,10 +76,10 @@ public class Event<T:Hashable> {
     */
     public var didFireEvent:    ( (event : Event) -> Void )?
     
-    required public init(name: String, sourceStates sources: [T], destinationState destination: T) {
+    required public init(name: String, sourceValues sources: [T], destinationValue destination: T) {
         self.name = name
-        self.sourceStates = sources
-        self.destinationState = destination
+        self.sourceValues = sources
+        self.destinationValue = destination
     }
 }
 

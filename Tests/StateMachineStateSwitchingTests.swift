@@ -87,26 +87,26 @@ class StateMachineStateSwitchingTests: XCTestCase {
     
     func testShouldFireEvent()
     {
-        let event = Event(name: "Foo", sourceStates: [0], destinationState: 1)
+        let event = Event(name: "Foo", sourceValues: [0], destinationValue: 1)
         var blockCalled = false
         event.shouldFireEvent = { event -> Bool in
             blockCalled = true
             return true
         }
         machine.addState(State(1))
-        machine.addEvent(event)
+        _ = try? machine.addEvent(event)
         machine.fireEvent(event)
         XCTAssert(blockCalled)
     }
     
     func testAddValidEvents()
     {
-        let event = Event(name: "Foo", sourceStates: [0], destinationState: 1)
-        let event2 = Event(name: "Bar", sourceStates: [0], destinationState: 2)
+        let event = Event(name: "Foo", sourceValues: [0], destinationValue: 1)
+        let event2 = Event(name: "Bar", sourceValues: [0], destinationValue: 2)
         machine.addState(State(1))
         machine.addEvents([event,event2])
         
-        XCTAssert(machine.canFireEvent("Foo").0)
-        XCTAssertFalse(machine.canFireEvent("Bar").0)
+        XCTAssert(machine.canFireEvent("Foo"))
+        XCTAssertFalse(machine.canFireEvent("Bar"))
     }
 }

@@ -41,6 +41,18 @@ public enum TransitionError: ErrorType {
         `WrongSourceState` means, that source states for this fired event do not include state, in which StateMachine is currently in.
     */
     case WrongSourceState
+    
+    /// `WrongType` means, that Event states don't match `StateMachine` or `State` type T.
+    case WrongEventType
+}
+
+public enum EventError: ErrorType {
+    
+    /// `NoSourceValue` means, that when adding `Event` to `StateMachine` one of source state values of event was not present on state machine
+    case NoSourceValue
+    
+    /// `NoDestinationValue` means, that when adding `Event` to `StateMachine` destination state value of event was not present on state machine
+    case NoDestinationValue
 }
 
 public class StateMachine<T:Hashable> {
@@ -112,28 +124,24 @@ public class StateMachine<T:Hashable> {
     /**
         Add event to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added, and this method will return false.
     */
-    public func addEvent(event: Event<T>) -> Bool {
-        if event.sourceStates.isEmpty
+    public func addEvent(event: Event<T>) throws {
+        if event.sourceValues.isEmpty
         {
-            _printMessage("Source states array is empty, when trying to add event.")
-            return false
+            throw EventError.NoSourceValue
         }
         
-        for state in event.sourceStates
+        for state in event.sourceValues
         {
             if (self.stateWithValue(state) == nil)
             {
-                _printMessage("Source state with value \(state) is not present")
-                return false
+                throw EventError.NoSourceValue
             }
         }
-        if (self.stateWithValue(event.destinationState) == nil) {
-            _printMessage("Destination state with value: \(event.destinationState)) does not exist")
-            return false
+        if (self.stateWithValue(event.destinationValue) == nil) {
+            throw EventError.NoDestinationValue
         }
         
         self.events.append(event)
-        return true
     }
     
     /**
@@ -142,9 +150,9 @@ public class StateMachine<T:Hashable> {
     public func addEvents(events: [Event<T>]) {
         for event in events
         {
-            let addingEvent = self.addEvent(event)
-            if addingEvent == false {
+            guard let _ = try? self.addEvent(event) else {
                 print("failed adding event with name: %@",event.name)
+                continue
             }
         }
     }
@@ -169,14 +177,12 @@ public class StateMachine<T:Hashable> {
         return _fireEventNamed(eventName)
     }
     
-    public func canFireEvent(event: Event<T>) -> (canFire: Bool, error: TransitionError?) {
-        if !events.contains(event) {
-            return (false,.UnknownEvent)
+    public func canFireEvent(event: Event<T>) -> Bool {
+        let possibleTransition = possibleTransitionForEvent(event)
+        if case .Error(_) = possibleTransition {
+            return false
         }
-        if event.sourceStates.contains(currentState.value) {
-            return (true,nil)
-        }
-        return (false,.WrongSourceState)
+        return true
     }
     
     /**
@@ -184,12 +190,22 @@ public class StateMachine<T:Hashable> {
     
         If first value of tuple is true, then event can be fired, if false - second parameter will include reason why event cannot be fired.
     */
-    public func canFireEvent(eventName: String) -> (canFire: Bool, error: TransitionError?) {
+    public func canFireEvent(eventName: String) -> Bool {
         if let event = eventWithName(eventName)
         {
            return canFireEvent(event)
         }
-        return (false, TransitionError.UnknownEvent)
+        return false
+    }
+    
+    public func possibleTransitionForEvent(event: Event<T>) -> Transition<T> {
+        if !events.contains(event) {
+            return .Error(.UnknownEvent)
+        }
+        if event.sourceValues.contains(currentState.value) {
+            return Transition.Success(sourceState: currentState, destinationState: State(event.destinationValue))
+        }
+        return .Error(.WrongSourceState)
     }
     
     public func stateWithValue(value: T) -> State<T>? {
@@ -213,34 +229,33 @@ private extension StateMachine {
     
     func _fireEventNamed(eventName: String) -> Transition<T> {
         if let event = eventWithName(eventName) {
-            let possibleTransition = canFireEvent(event)
+            let possibleTransition = possibleTransitionForEvent(event)
             switch possibleTransition {
-            case (true, _):
+            case .Success(let sourceState, let destinationState):
                 if let shouldBlock = event.shouldFireEvent {
                     if shouldBlock(event: event) {
-                        let sourceState = self.currentState
                         event.willFireEvent?(event: event)
-                        activateState(event.destinationState)
+                        activateState(event.destinationValue)
                         event.didFireEvent?(event: event)
-                        return Transition.Success(sourceState: sourceState, destinationState: self.currentState)
+                        return .Success(sourceState: sourceState, destinationState: destinationState)
                     }
                     else {
-                        return Transition.Error(TransitionError.TransitionDeclined)
+                        return .Error(.TransitionDeclined)
                     }
                 }
                 else {
                     let sourceState = self.currentState
                     event.willFireEvent?(event: event)
-                    activateState(event.destinationState)
+                    activateState(event.destinationValue)
                     event.didFireEvent?(event: event)
-                    return Transition.Success(sourceState: sourceState, destinationState: self.currentState)
+                    return .Success(sourceState: sourceState, destinationState: destinationState)
                 }
-            case (false, let error):
-                return Transition.Error(error!)
+            default :
+                return possibleTransition
             }
         }
         else {
-            return Transition.Error(TransitionError.UnknownEvent)
+            return .Error(.UnknownEvent)
         }
     }
     

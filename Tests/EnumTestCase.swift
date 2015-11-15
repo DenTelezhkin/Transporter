@@ -48,9 +48,9 @@ class EnumTestCase: XCTestCase {
     }
     
     func testFiringEvent() {
-        let event = Event(name: EnumEvents.MakeProgress, sourceStates: [StateEnum.Start,StateEnum.Progress], destinationState: StateEnum.Progress)
+        let event = Event(name: EnumEvents.MakeProgress, sourceValues: [StateEnum.Start], destinationValue: StateEnum.Progress)
         
-        machine.addEvent(event)
+        _ = try? machine.addEvent(event)
         machine.fireEvent(EnumEvents.MakeProgress)
         
         XCTAssert(machine.isInState(.Progress))

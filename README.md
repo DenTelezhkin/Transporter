@@ -7,7 +7,7 @@
 Transporter
 ==================
 
-Transporter is a modern finite-state machine implemented in pure Swift.
+Transporter is a modern finite-state machine implemented in pure Swift. It is truly cross-platform, and supports iOS, OS X, tvOS, watchOS, and even Linux in the future.
 
 ### Features
 
@@ -31,14 +31,14 @@ let unlocked = State(Turnstile.Unlocked)
 locked.didEnterState = { _ in lockEntrance() }
 unlocked.didEnterState = { _ in unlockEntrance() }
 
-let coinEvent = Event(name: "Coin", sourceStates: [Turnstile.Locked], destinationState: Turnstile.Unlocked)
-let pushEvent = Event(name: "Push", sourceStates: [Turnstile.Unlocked], destinationState: Turnstile.Locked)
+let coinEvent = Event(name: "Coin", sourceValues: [Turnstile.Locked], destinationValue: Turnstile.Unlocked)
+let pushEvent = Event(name: "Push", sourceValues: [Turnstile.Unlocked], destinationValue: Turnstile.Locked)
 
-let turnstile = StateMachine(initialState: locked, states: unlocked)
+let turnstile = StateMachine(initialState: locked, states: [unlocked])
 turnstile.addEvents([coinEvent,pushEvent])
 
 turnstile.fireEvent("Coin")
-turnstile.isInState(.Unlocked) // true
+turnstile.isInState(.Unlocked) //true
 ```
 
 ### States
@@ -75,14 +75,14 @@ You can also use convenience constructor:
 Adding events implicitly checks, whether event source states and destination state are present in `StateMachine`. If states are not present, event will not be added to `StateMachine`.
 
 ```swift
-  machine.addEvent(event)
+  _ = try? machine.addEvent(event)
   machine.addEvents([event1,event2])
 ```
 
 Can event be fired?
 
 ```swift
-  if machine.canFireEvent("foo").0 {
+  if machine.canFireEvent("foo") {
     println("Fire it!")
   }
 ```
@@ -129,11 +129,11 @@ Due to generic implementation of Transporter, it will not support Objective-C. I
 #### CocoaPods
 
 ```ruby
-  pod 'Transporter', '~> 1.1.0'
+  pod 'Transporter', '~> 2.0.0'
 ```
 
 #### Carthage
 
 ```ruby
-  carthage 'DenHeadless/Transporter'
+  carthage 'DenHeadless/Transporter' "2.0.0"
 ```

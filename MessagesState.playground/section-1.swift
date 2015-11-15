@@ -27,10 +27,10 @@ deleted.didEnterState = { state in moveMessageToTrash() }
 
 let inboxMachine = StateMachine(initialState: unread, states: [read,deleted])
 
-let viewMessage = Event(name: "View message", sourceStates: ["Unread"],
-    destinationState: "Read")
-let deleteMessage = Event(name: "Delete message", sourceStates: ["Read","Unread"], destinationState: "Deleted")
-let markUnread = Event(name: "Mark as unread", sourceStates: ["Read","Deleted"], destinationState: "Unread")
+let viewMessage = Event(name: "View message", sourceValues: ["Unread"],
+    destinationValue: "Read")
+let deleteMessage = Event(name: "Delete message", sourceValues: ["Read","Unread"], destinationValue: "Deleted")
+let markUnread = Event(name: "Mark as unread", sourceValues: ["Read","Deleted"], destinationValue: "Unread")
 
 inboxMachine.addEvents([viewMessage,deleteMessage,markUnread])
 
