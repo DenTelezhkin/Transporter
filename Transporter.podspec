@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Transporter"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "Modern finite-state machine implemented in pure Swift."
 
   s.homepage     = "https://github.com/DenHeadless/Transporter"
@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "https://github.com/DenHeadless/Transporter.git", :tag => s.version.to_s }
-  s.source_files  = "Code/*.{swift}"
+  s.source_files  = "Sources/*.{swift}"
 end
