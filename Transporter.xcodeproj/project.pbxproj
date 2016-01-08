@@ -71,7 +71,7 @@
 
 /* Begin PBXFileReference section */
 		9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachineConstructorsTests.swift; path = Tests/StateMachineConstructorsTests.swift; sourceTree = SOURCE_ROOT; };
-		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Code/StateMachine.swift; sourceTree = SOURCE_ROOT; };
+		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Sources/StateMachine.swift; sourceTree = SOURCE_ROOT; };
 		9A3526FF1A1601050006AB0F /* MessagesState.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MessagesState.playground; sourceTree = "<group>"; };
 		9A3527051A1601770006AB0F /* Transporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Transporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A35270F1A1601770006AB0F /* Tests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,8 +89,8 @@
 		9AA3C8601A14F04300D68CC3 /* Turnstile.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Turnstile.playground; sourceTree = "<group>"; };
 		9AA3C8661A14F11600D68CC3 /* Transporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Transporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC8C9FC1969BBB5006F1EAC /* Tests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC8CA0F1969C668006F1EAC /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = Code/State.swift; sourceTree = SOURCE_ROOT; };
-		9AFD84A919FF9D76001C2639 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Code/Event.swift; sourceTree = SOURCE_ROOT; };
+		9AC8CA0F1969C668006F1EAC /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = Sources/State.swift; sourceTree = SOURCE_ROOT; };
+		9AFD84A919FF9D76001C2639 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Sources/Event.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +192,7 @@
 				9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */,
 			);
 			name = Code;
-			path = StateMachine;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		9AC8C9FF1969BBB5006F1EAC /* Tests */ = {
