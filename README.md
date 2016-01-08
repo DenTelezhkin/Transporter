@@ -7,7 +7,7 @@
 Transporter
 ==================
 
-Transporter is a modern finite-state machine implemented in pure Swift. It is truly cross-platform, and supports iOS, OS X, tvOS, watchOS, and even Linux in the future.
+Transporter is a modern finite-state machine implemented in pure Swift. It is truly cross-platform, and supports iOS, OS X, tvOS, watchOS, Linux.
 
 ### Features
 
