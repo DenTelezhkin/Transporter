@@ -4,25 +4,22 @@ language: objective-c
 env:
   global:
     - IOS_SDK=iphonesimulator9.2
-    - IOS_SCHEME="Transporter-iOS"
     - TVOS_SDK=appletvsimulator9.1
-    - TVOS_SCHEME="Transporter-tvOS"
-    - OSX_SCHEME="Transporter-OSX"
     - OSX_SDK=macosx10.11
   matrix:
-      - DESTINATION="OS=9.2,name=iPad 2"         SDK="$IOS_SDK"  SCHEME="$IOS_SCHEME"
-      - DESTINATION="OS=9.2,name=iPad Air"       SDK="$IOS_SDK"  SCHEME="$IOS_SCHEME"
-      - DESTINATION="OS=9.2,name=iPhone 5"       SDK="$IOS_SDK"  SCHEME="$IOS_SCHEME"
-      - DESTINATION="OS=9.2,name=iPhone 6s"      SDK="$IOS_SDK"  SCHEME="$IOS_SCHEME"
-      - DESTINATION="OS=8.4,name=iPhone 6"       SDK="$IOS_SDK"  SCHEME="$IOS_SCHEME"
-      - DESTINATION="OS=8.4,name=iPad Air"       SDK="$IOS_SDK"  SCHEME="$IOS_SCHEME"
-      - DESTINATION="OS=9.1,name=Apple TV 1080p" SDK="$TVOS_SDK" SCHEME="$TVOS_SCHEME"
-      - DESTINATION="arch=x86_64"                SDK="$OSX_SDK"  SCHEME="$OSX_SCHEME"
+      - DESTINATION="OS=9.2,name=iPad 2"         SDK="$IOS_SDK"
+      - DESTINATION="OS=9.2,name=iPad Air"       SDK="$IOS_SDK"
+      - DESTINATION="OS=9.2,name=iPhone 5"       SDK="$IOS_SDK"
+      - DESTINATION="OS=9.2,name=iPhone 6s"      SDK="$IOS_SDK"
+      - DESTINATION="OS=8.4,name=iPhone 6"       SDK="$IOS_SDK"
+      - DESTINATION="OS=8.4,name=iPad Air"       SDK="$IOS_SDK"
+      - DESTINATION="OS=9.1,name=Apple TV 1080p" SDK="$TVOS_SDK"
+      - DESTINATION="arch=x86_64"                SDK="$OSX_SDK"
 
 script:
     - set -o pipefail
     - xcodebuild -version
-    - xcodebuild -scheme "$SCHEME" -configuration Debug -sdk "$SDK" -destination "$DESTINATION" test -enableCodeCoverage YES  "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`" | xcpretty
+    - xcodebuild -scheme "Transporter" -configuration Debug -sdk "$SDK" -destination "$DESTINATION" test -enableCodeCoverage YES  "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`" | xcpretty
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
