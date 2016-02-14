@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A2BB2651A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */; };
-		9A3527371A16052C0006AB0F /* Transporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3C8661A14F11600D68CC3 /* Transporter.framework */; };
+		9A3442051C706CD500E3AC14 /* Transporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3C8661A14F11600D68CC3 /* Transporter.framework */; };
 		9AA3C8591A14E37400D68CC3 /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */; };
 		9AA3C85A1A14E37400D68CC3 /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */; };
 		9AA3C85B1A14E37400D68CC3 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8551A14E37400D68CC3 /* EventTests.swift */; };
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A3527371A16052C0006AB0F /* Transporter.framework in Frameworks */,
+				9A3442051C706CD500E3AC14 /* Transporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,16 +140,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		9AA3C8631A14F11600D68CC3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		9AA3C8651A14F11600D68CC3 /* Transporter */ = {
 			isa = PBXNativeTarget;
@@ -157,7 +147,6 @@
 			buildPhases = (
 				9AA3C8611A14F11600D68CC3 /* Sources */,
 				9AA3C8621A14F11600D68CC3 /* Frameworks */,
-				9AA3C8631A14F11600D68CC3 /* Headers */,
 				9AA3C8641A14F11600D68CC3 /* Resources */,
 			);
 			buildRules = (
@@ -218,8 +207,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9AC8C9FB1969BBB5006F1EAC /* Tests */,
 				9AA3C8651A14F11600D68CC3 /* Transporter */,
+				9AC8C9FB1969BBB5006F1EAC /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,6 +270,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A03334D1C6FBDFC00065221 /* UniversalFramework_Framework.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -295,6 +285,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Transporter;
 				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -304,6 +295,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A03334D1C6FBDFC00065221 /* UniversalFramework_Framework.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -314,6 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Transporter;
 				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -323,7 +316,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -336,6 +328,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -352,12 +346,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -365,7 +357,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -378,6 +369,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -387,12 +380,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -400,13 +391,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A03334E1C6FBDFC00065221 /* UniversalFramework_Test.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Plists/Tests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,9 +408,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A03334E1C6FBDFC00065221 /* UniversalFramework_Test.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Plists/Tests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

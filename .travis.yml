@@ -15,7 +15,7 @@ env:
 script:
     - set -o pipefail
     - xcodebuild -version
-    - xcodebuild -scheme "Transporter" -configuration Debug -destination "$DESTINATION" test -enableCodeCoverage YES  "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`" | xcpretty
+    - xcodebuild -scheme "Transporter" -configuration Debug -destination "$DESTINATION" clean test -enableCodeCoverage YES  "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`" | xcpretty
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
