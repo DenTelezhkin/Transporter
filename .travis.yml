@@ -10,6 +10,8 @@ matrix:
       env: ACTION=carthage
     - os: osx
       env: ACTION=coverage
+    - os: osx
+      env: ACTION=cocoapods
     # - os: osx
     #   env: ACTION=oss-osx
 

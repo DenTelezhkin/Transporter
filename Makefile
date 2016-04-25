@@ -17,8 +17,11 @@ install-carthage:
 install-coverage:
 	true
 
-install-oss-osx:
-	sh swiftenv-install.sh
+install-cocoapods:
+	true
+
+# install-oss-osx:
+# 	sh swiftenv-install.sh
 
 # Run Tasks
 
@@ -58,6 +61,9 @@ test-carthage:
 test-coverage:
 	  set -o pipefail && xcodebuild -project Transporter.xcodeproj -scheme Transporter -enableCodeCoverage YES test | xcpretty -ct
 		bash <(curl -s https://codecov.io/bash)
+
+test-cocoapods:
+	pod lib lint Transporter.podspec --verbose
 
 # test-oss-osx:
 # 	. ~/.swiftenv/init && swift build
