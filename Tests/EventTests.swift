@@ -9,7 +9,7 @@
 import XCTest
 import Transporter
 
-func XCTAssertThrows<T: ErrorType where T: Equatable>(error: T, block: () throws -> ()) {
+func XCTAssertThrows<T: ErrorProtocol where T: Equatable>(_ error: T, block: () throws -> ()) {
     do {
         try block()
     }
@@ -33,7 +33,7 @@ class NumberTests: XCTestCase {
     
     func testEventWithNoMatchingStates() {
         let event = Event(name: "", sourceValues: [1,2], destinationValue: 3)
-        XCTAssertThrows(EventError.NoSourceValue) {
+        XCTAssertThrows(EventError.noSourceValue) {
             try self.machine.addEvent(event)
         }
     }
@@ -43,7 +43,7 @@ class NumberTests: XCTestCase {
         
         let event = Event(name: "", sourceValues: [], destinationValue: 2)
         
-        XCTAssertThrows(EventError.NoSourceValue) {
+        XCTAssertThrows(EventError.noSourceValue) {
             try self.machine.addEvent(event)
         }
     }
@@ -64,7 +64,7 @@ class NumberTests: XCTestCase {
     
     func testAddingEventWithWrongDestinationState() {
         let event = Event(name: "3", sourceValues: [0], destinationValue: 2)
-        XCTAssertThrows(EventError.NoDestinationValue) {
+        XCTAssertThrows(EventError.noDestinationValue) {
             try self.machine.addEvent(event)
         }
     }
@@ -105,10 +105,10 @@ class StringTests: XCTestCase {
         let transition = machine.fireEvent("Pass")
         
         switch transition {
-        case .Success(_,_):
+        case .success(_,_):
             XCTFail("success should not be fired")
-        case .Error(let error):
-            XCTAssertEqual(error, TransitionError.TransitionDeclined)
+        case .error(let error):
+            XCTAssertEqual(error, TransitionError.transitionDeclined)
         }
     }
     
@@ -121,10 +121,10 @@ class StringTests: XCTestCase {
         let transition = machine.fireEvent("Completed")
         
         switch transition {
-        case .Success(_,_):
+        case .success(_,_):
             XCTFail("success should not be fired")
-        case .Error(let error):
-            XCTAssertEqual(error, TransitionError.WrongSourceState)
+        case .error(let error):
+            XCTAssertEqual(error, TransitionError.wrongSourceState)
         }
     }
     
@@ -134,10 +134,10 @@ class StringTests: XCTestCase {
         
         let transition = machine.fireEvent("Pass")
         switch transition {
-        case .Success(let sourceState,let destinationState):
+        case .success(let sourceState,let destinationState):
             XCTAssert(sourceState.value == "Initial")
             XCTAssert(destinationState.value == "Passed")
-        case .Error(_):
+        case .error(_):
             XCTFail("There shouldn't be any errors")
         }
     }
@@ -164,10 +164,10 @@ class StringTests: XCTestCase {
         let transition = machine.fireEvent("Foo")
         
         switch transition {
-        case .Success(_, _):
+        case .success(_, _):
             XCTFail("Event does not exist and should not be fired")
-        case .Error(let error):
-            XCTAssertEqual(error, TransitionError.UnknownEvent)
+        case .error(let error):
+            XCTAssertEqual(error, TransitionError.unknownEvent)
         }
     }
     

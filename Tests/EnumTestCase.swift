@@ -10,9 +10,9 @@ import XCTest
 import Transporter
 
 enum StateEnum {
-    case Start
-    case Progress
-    case Finish
+    case start
+    case progress
+    case finish
 }
 
 struct EnumEvents {
@@ -27,32 +27,32 @@ class EnumTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let initialState = State(StateEnum.Start)
+        let initialState = State(StateEnum.start)
         machine = StateMachine(initialState: initialState)
         
-        let progressState = State(StateEnum.Progress)
-        let finishState = State(StateEnum.Finish)
+        let progressState = State(StateEnum.progress)
+        let finishState = State(StateEnum.finish)
         
         machine.addStates([progressState,finishState])
     }
     
     func testStateChange() {
-        let state = machine.stateWithValue(.Progress)
+        let state = machine.stateWithValue(.progress)
         
         var x = 0
         state?.didEnterState = { _ in x = 6 }
         
-        machine.activateState(.Progress)
+        machine.activateState(.progress)
         
         XCTAssertEqual(x, 6)
     }
     
     func testFiringEvent() {
-        let event = Event(name: EnumEvents.MakeProgress, sourceValues: [StateEnum.Start], destinationValue: StateEnum.Progress)
+        let event = Event(name: EnumEvents.MakeProgress, sourceValues: [StateEnum.start], destinationValue: StateEnum.progress)
         
         _ = try? machine.addEvent(event)
         machine.fireEvent(EnumEvents.MakeProgress)
         
-        XCTAssert(machine.isInState(.Progress))
+        XCTAssert(machine.isInState(.progress))
     }
 }

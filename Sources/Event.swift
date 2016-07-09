@@ -33,10 +33,10 @@ public enum Transition<T:Hashable> {
     */
     public var successful: Bool {
         switch self {
-            case .Success(_,_):
+            case .success(_,_):
                 return true
         
-            case .Error(_):
+            case .error(_):
                 return false
         }
     }
@@ -44,12 +44,12 @@ public enum Transition<T:Hashable> {
     /**
         Success case with source state, from which transition happened, and destination state, to which state machine switched
     */
-    case Success(sourceState: State<T>, destinationState: State<T>)
+    case success(sourceState: State<T>, destinationState: State<T>)
     
     /**
         Error case, containing error. Error domain and status codes are described in Errors struct.
     */
-    case Error(TransitionError)
+    case error(TransitionError)
 }
 
 /**

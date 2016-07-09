@@ -26,34 +26,34 @@
 /**
 Enum with possible transition errors. These are meant to be used inside fireEvent method on StateMachine. They will be included as status codes inside NSError, that Transition.Error enum returns.
 */
-public enum TransitionError: ErrorType {
+public enum TransitionError: ErrorProtocol {
     /**
         When event's shouldFireEvent closure returns false, `TransitionDeclined` error will be returned as a status code inside NSError object.
     */
-    case TransitionDeclined
+    case transitionDeclined
     
     /**
         `UnknownEvent` means there's no such event on `StateMachine`.
     */
-    case UnknownEvent
+    case unknownEvent
     
     /**
         `WrongSourceState` means, that source states for this fired event do not include state, in which StateMachine is currently in.
     */
-    case WrongSourceState
+    case wrongSourceState
     
     /// `WrongType` means, that Event states don't match `StateMachine` or `State` type T.
-    case WrongEventType
+    case wrongEventType
 }
 
 /// This enum contains events, that can happen when adding event to state machine.
-public enum EventError: ErrorType {
+public enum EventError: ErrorProtocol {
     
     /// `NoSourceValue` means, that when adding `Event` to `StateMachine` one of source state values of event was not present on state machine
-    case NoSourceValue
+    case noSourceValue
     
     /// `NoDestinationValue` means, that when adding `Event` to `StateMachine` destination state value of event was not present on state machine
-    case NoDestinationValue
+    case noDestinationValue
 }
 
 /// `StateMachine` is a state machine, obviously =).
@@ -94,13 +94,13 @@ public class StateMachine<T:Hashable> {
     convenience public init(initialState: State<T>, states: [State<T>])
     {
         self.init(initialState: initialState)
-        self.availableStates.appendContentsOf(states)
+        self.availableStates.append(contentsOf: states)
     }
     
     /// Activate state, if it's present in `StateMachine`. This method is not tied to events, present in StateMachine.
     /// - Parameter stateValue: value of state to switch to.
     /// - Note: This method basically breaks conditional finite-state machine rules, because it does not check any conditions between states. However, it allows more simple state-machine usage, if you don't need complicated events system.
-    public func activateState(stateValue: T) {
+    public func activateState(_ stateValue: T) {
         if (isStateAvailable(stateValue))
         {
             let oldState = currentState
@@ -118,7 +118,7 @@ public class StateMachine<T:Hashable> {
     
     /// If state is present in available states in `StateMachine`, this method will return true. This method does not check events on `StateMachine`.
     /// - Parameter stateValue: value of state to check availability for.
-    public func isStateAvailable(stateValue: T) -> Bool {
+    public func isStateAvailable(_ stateValue: T) -> Bool {
         let states = availableStates.filter { (element) -> Bool in
             return element.value == stateValue
         }
@@ -130,34 +130,34 @@ public class StateMachine<T:Hashable> {
     
     /// Add state to array of available states
     /// - Parameter state: state to add
-    public func addState(state: State<T>) {
+    public func addState(_ state: State<T>) {
         availableStates.append(state)
     }
     
     /// Add array of states
     /// - Parameter states: states array.
-    public func addStates(states: [State<T>]) {
-        availableStates.appendContentsOf(states)
+    public func addStates(_ states: [State<T>]) {
+        availableStates.append(contentsOf: states)
     }
     
     /// Add event to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added, and this method will throw.
     /// - Parameter event: event to add.
     /// - Throws: `EventError` if event cannot be added.
-    public func addEvent(event: Event<T>) throws {
+    public func addEvent(_ event: Event<T>) throws {
         if event.sourceValues.isEmpty
         {
-            throw EventError.NoSourceValue
+            throw EventError.noSourceValue
         }
         
         for state in event.sourceValues
         {
             if (self.stateWithValue(state) == nil)
             {
-                throw EventError.NoSourceValue
+                throw EventError.noSourceValue
             }
         }
         if (self.stateWithValue(event.destinationValue) == nil) {
-            throw EventError.NoDestinationValue
+            throw EventError.noDestinationValue
         }
         
         self.events.append(event)
@@ -165,7 +165,7 @@ public class StateMachine<T:Hashable> {
     
     /// Add events to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added.
     /// - Parameter events: events to add to `StateMachine`.
-    public func addEvents(events: [Event<T>]) {
+    public func addEvents(_ events: [Event<T>]) {
         for event in events
         {
             guard let _ = try? self.addEvent(event) else {
@@ -187,23 +187,25 @@ public class StateMachine<T:Hashable> {
      - parameter event: event to fire
      - returns: `Transition` object.
     */
-    public func fireEvent(event: Event<T>) -> Transition<T> {
+    @discardableResult
+    public func fireEvent(_ event: Event<T>) -> Transition<T> {
         return _fireEventNamed(event.name)
     }
     
     /// This method is a convenience shortcut to fireEvent(event: Event<StateType>) method above.
     /// - Parameter eventName: name of event to fire.
     /// - Returns: `Transition` object.
-    public func fireEvent(eventName: String) -> Transition<T> {
+    @discardableResult
+    public func fireEvent(_ eventName: String) -> Transition<T> {
         return _fireEventNamed(eventName)
     }
     
     /// Returns, whether event can be fired (event is present on state machine, current state is in list of available states)
     /// - Parameter event: Event
     /// - Returns: whether event can be fired
-    public func canFireEvent(event: Event<T>) -> Bool {
+    public func canFireEvent(_ event: Event<T>) -> Bool {
         let possibleTransition = possibleTransitionForEvent(event)
-        if case .Error(_) = possibleTransition {
+        if case .error(_) = possibleTransition {
             return false
         }
         return true
@@ -215,7 +217,7 @@ public class StateMachine<T:Hashable> {
      - Parameter eventName: name of event that could be fired
      - Returns: true, if event can be fired, false if don't
     */
-    public func canFireEvent(eventName: String) -> Bool {
+    public func canFireEvent(_ eventName: String) -> Bool {
         if let event = eventWithName(eventName)
         {
            return canFireEvent(event)
@@ -228,14 +230,14 @@ public class StateMachine<T:Hashable> {
      - Parameter event: event that could be fired.
      - Returns: `Transition` object.
      */
-    public func possibleTransitionForEvent(event: Event<T>) -> Transition<T> {
+    public func possibleTransitionForEvent(_ event: Event<T>) -> Transition<T> {
         if !events.contains(event) {
-            return .Error(.UnknownEvent)
+            return .error(.unknownEvent)
         }
         if event.sourceValues.contains(currentState.value) {
-            return Transition.Success(sourceState: currentState, destinationState: State(event.destinationValue))
+            return Transition.success(sourceState: currentState, destinationState: State(event.destinationValue))
         }
-        return .Error(.WrongSourceState)
+        return .error(.wrongSourceState)
     }
     
     /**
@@ -244,7 +246,7 @@ public class StateMachine<T:Hashable> {
      - Parameter value: value of state to search for
      - Returns: state, if found.
      */
-    public func stateWithValue(value: T) -> State<T>? {
+    public func stateWithValue(_ value: T) -> State<T>? {
         return availableStates.filter { (element) -> Bool in
             return element.value == value
         }.first
@@ -253,7 +255,7 @@ public class StateMachine<T:Hashable> {
     /// Retrieve event with specific name
     /// - Parameter name: Name of the event
     /// - Returns: event, if found.
-    public func eventWithName(name: String) -> Event<T>? {
+    public func eventWithName(_ name: String) -> Event<T>? {
         return events.filter { (element) -> Bool in
             return element.name == name
         }.first
@@ -262,7 +264,7 @@ public class StateMachine<T:Hashable> {
     /// Check, whether state machine is in concrete state
     /// - Parameter stateValue: value of state to check for
     /// - Returns: whether state machine is in this state.
-    public func isInState(stateValue: T) -> Bool {
+    public func isInState(_ stateValue: T) -> Bool {
         return stateValue == currentState.value
     }
 }
@@ -281,20 +283,20 @@ private extension StateMachine {
      - Returns: `Transition` object.
      */
     ///
-    func _fireEventNamed(eventName: String) -> Transition<T> {
+    func _fireEventNamed(_ eventName: String) -> Transition<T> {
         if let event = eventWithName(eventName) {
             let possibleTransition = possibleTransitionForEvent(event)
             switch possibleTransition {
-            case .Success(let sourceState, let destinationState):
+            case .success(let sourceState, let destinationState):
                 if let shouldBlock = event.shouldFireEvent {
                     if shouldBlock(event: event) {
                         event.willFireEvent?(event: event)
                         activateState(event.destinationValue)
                         event.didFireEvent?(event: event)
-                        return .Success(sourceState: sourceState, destinationState: destinationState)
+                        return .success(sourceState: sourceState, destinationState: destinationState)
                     }
                     else {
-                        return .Error(.TransitionDeclined)
+                        return .error(.transitionDeclined)
                     }
                 }
                 else {
@@ -302,14 +304,14 @@ private extension StateMachine {
                     event.willFireEvent?(event: event)
                     activateState(event.destinationValue)
                     event.didFireEvent?(event: event)
-                    return .Success(sourceState: sourceState, destinationState: destinationState)
+                    return .success(sourceState: sourceState, destinationState: destinationState)
                 }
             default :
                 return possibleTransition
             }
         }
         else {
-            return .Error(.UnknownEvent)
+            return .error(.unknownEvent)
         }
     }
 }
