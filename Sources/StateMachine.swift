@@ -26,7 +26,7 @@
 /**
 Enum with possible transition errors. These are meant to be used inside fireEvent method on StateMachine. They will be included as status codes inside NSError, that Transition.Error enum returns.
 */
-public enum TransitionError: ErrorProtocol {
+public enum TransitionError: Error {
     /**
         When event's shouldFireEvent closure returns false, `TransitionDeclined` error will be returned as a status code inside NSError object.
     */
@@ -47,7 +47,7 @@ public enum TransitionError: ErrorProtocol {
 }
 
 /// This enum contains events, that can happen when adding event to state machine.
-public enum EventError: ErrorProtocol {
+public enum EventError: Error {
     
     /// `NoSourceValue` means, that when adding `Event` to `StateMachine` one of source state values of event was not present on state machine
     case noSourceValue
