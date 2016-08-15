@@ -9,7 +9,8 @@
 import XCTest
 import Transporter
 
-func XCTAssertThrows<T: Error where T: Equatable>(_ error: T, block: () throws -> ()) {
+func XCTAssertThrows<T: Error>(_ error: T, block: () throws -> ()) where T: Equatable
+{
     do {
         try block()
     }

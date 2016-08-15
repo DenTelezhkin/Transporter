@@ -32,16 +32,16 @@ public class State <T:Hashable>  {
     public let value : T
     
     /// Closure, that will be executed, before state machine enters this state
-    public var willEnterState: ( (enteringState : State<T> ) -> Void)?
+    public var willEnterState: ( (_ enteringState : State<T> ) -> Void)?
     
     /// Closure, that will be executed, after state machine enters this state
-    public var didEnterState:  ( (enteringState : State<T> ) -> Void)?
+    public var didEnterState:  ( (_ enteringState : State<T> ) -> Void)?
     
     /// Closure, that will be executed before state machine will switch from current state to another state.
-    public var willExitState:  ( (exitingState  : State<T> ) -> Void)?
+    public var willExitState:  ( (_ exitingState  : State<T> ) -> Void)?
     
     /// Closure, that will be executed after state machine switched from current state to another state.
-    public var didExitState:   ( (exitingState  : State<T> ) -> Void)?
+    public var didExitState:   ( (_ exitingState  : State<T> ) -> Void)?
     
     /// Create state with value
     /// - Parameter value: value of state

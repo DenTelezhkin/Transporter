@@ -67,13 +67,13 @@ public class Event<T:Hashable> {
     public let destinationValue: T
     
     ///  If this closure return value is false, event will not be fired
-    public var shouldFireEvent: ( (event : Event) -> Bool )?
+    public var shouldFireEvent: ( (_ event : Event) -> Bool )?
     
     /// This closure will be executed before event is fired.
-    public var willFireEvent:   ( (event : Event) -> Void )?
+    public var willFireEvent:   ( (_ event : Event) -> Void )?
     
     /// This closure will be executed after event was fired.
-    public var didFireEvent:    ( (event : Event) -> Void )?
+    public var didFireEvent:    ( (_ event : Event) -> Void )?
     
     /// Initializer for Event.
     /// - Parameter name: name of the event

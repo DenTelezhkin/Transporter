@@ -106,13 +106,13 @@ public class StateMachine<T:Hashable> {
             let oldState = currentState
             let newState = stateWithValue(stateValue)!
             
-            newState.willEnterState?(enteringState: newState)
-            oldState.willExitState?(exitingState: oldState)
+            newState.willEnterState?(newState)
+            oldState.willExitState?(oldState)
             
             currentState = newState
             
-            oldState.didExitState?(exitingState: oldState)
-            newState.didEnterState?(enteringState: currentState)
+            oldState.didExitState?(oldState)
+            newState.didEnterState?(currentState)
         }
     }
     
@@ -289,10 +289,10 @@ private extension StateMachine {
             switch possibleTransition {
             case .success(let sourceState, let destinationState):
                 if let shouldBlock = event.shouldFireEvent {
-                    if shouldBlock(event: event) {
-                        event.willFireEvent?(event: event)
+                    if shouldBlock(event) {
+                        event.willFireEvent?(event)
                         activateState(event.destinationValue)
-                        event.didFireEvent?(event: event)
+                        event.didFireEvent?(event)
                         return .success(sourceState: sourceState, destinationState: destinationState)
                     }
                     else {
@@ -301,9 +301,9 @@ private extension StateMachine {
                 }
                 else {
                     let sourceState = self.currentState
-                    event.willFireEvent?(event: event)
+                    event.willFireEvent?(event)
                     activateState(event.destinationValue)
-                    event.didFireEvent?(event: event)
+                    event.didFireEvent?(event)
                     return .success(sourceState: sourceState, destinationState: destinationState)
                 }
             default :
