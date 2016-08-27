@@ -57,13 +57,13 @@ public enum EventError: Error {
 }
 
 /// `StateMachine` is a state machine, obviously =).
-public class StateMachine<T:Hashable> {
+open class StateMachine<T:Hashable> {
     
     /// Initial state of state machine.
     var initialState: State<T>
     
     /// Current state of state machine
-    public private(set) var currentState : State<T>
+    open private(set) var currentState : State<T>
     
     /// Available states in state machine
     private lazy var availableStates : [State<T>] = []
@@ -100,7 +100,7 @@ public class StateMachine<T:Hashable> {
     /// Activate state, if it's present in `StateMachine`. This method is not tied to events, present in StateMachine.
     /// - Parameter stateValue: value of state to switch to.
     /// - Note: This method basically breaks conditional finite-state machine rules, because it does not check any conditions between states. However, it allows more simple state-machine usage, if you don't need complicated events system.
-    public func activateState(_ stateValue: T) {
+    open func activateState(_ stateValue: T) {
         if (isStateAvailable(stateValue))
         {
             let oldState = currentState
@@ -118,7 +118,7 @@ public class StateMachine<T:Hashable> {
     
     /// If state is present in available states in `StateMachine`, this method will return true. This method does not check events on `StateMachine`.
     /// - Parameter stateValue: value of state to check availability for.
-    public func isStateAvailable(_ stateValue: T) -> Bool {
+    open func isStateAvailable(_ stateValue: T) -> Bool {
         let states = availableStates.filter { (element) -> Bool in
             return element.value == stateValue
         }
@@ -130,20 +130,20 @@ public class StateMachine<T:Hashable> {
     
     /// Add state to array of available states
     /// - Parameter state: state to add
-    public func addState(_ state: State<T>) {
+    open func addState(_ state: State<T>) {
         availableStates.append(state)
     }
     
     /// Add array of states
     /// - Parameter states: states array.
-    public func addStates(_ states: [State<T>]) {
+    open func addStates(_ states: [State<T>]) {
         availableStates.append(contentsOf: states)
     }
     
     /// Add event to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added, and this method will throw.
     /// - Parameter event: event to add.
     /// - Throws: `EventError` if event cannot be added.
-    public func addEvent(_ event: Event<T>) throws {
+    open func addEvent(_ event: Event<T>) throws {
         if event.sourceValues.isEmpty
         {
             throw EventError.noSourceValue
@@ -165,7 +165,7 @@ public class StateMachine<T:Hashable> {
     
     /// Add events to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added.
     /// - Parameter events: events to add to `StateMachine`.
-    public func addEvents(_ events: [Event<T>]) {
+    open func addEvents(_ events: [Event<T>]) {
         for event in events
         {
             guard let _ = try? self.addEvent(event) else {
@@ -188,7 +188,7 @@ public class StateMachine<T:Hashable> {
      - returns: `Transition` object.
     */
     @discardableResult
-    public func fireEvent(_ event: Event<T>) -> Transition<T> {
+    open func fireEvent(_ event: Event<T>) -> Transition<T> {
         return _fireEventNamed(event.name)
     }
     
@@ -196,14 +196,14 @@ public class StateMachine<T:Hashable> {
     /// - Parameter eventName: name of event to fire.
     /// - Returns: `Transition` object.
     @discardableResult
-    public func fireEvent(_ eventName: String) -> Transition<T> {
+    open func fireEvent(_ eventName: String) -> Transition<T> {
         return _fireEventNamed(eventName)
     }
     
     /// Returns, whether event can be fired (event is present on state machine, current state is in list of available states)
     /// - Parameter event: Event
     /// - Returns: whether event can be fired
-    public func canFireEvent(_ event: Event<T>) -> Bool {
+    open func canFireEvent(_ event: Event<T>) -> Bool {
         let possibleTransition = possibleTransitionForEvent(event)
         if case .error(_) = possibleTransition {
             return false
@@ -217,7 +217,7 @@ public class StateMachine<T:Hashable> {
      - Parameter eventName: name of event that could be fired
      - Returns: true, if event can be fired, false if don't
     */
-    public func canFireEvent(_ eventName: String) -> Bool {
+    open func canFireEvent(_ eventName: String) -> Bool {
         if let event = eventWithName(eventName)
         {
            return canFireEvent(event)
@@ -230,7 +230,7 @@ public class StateMachine<T:Hashable> {
      - Parameter event: event that could be fired.
      - Returns: `Transition` object.
      */
-    public func possibleTransitionForEvent(_ event: Event<T>) -> Transition<T> {
+    open func possibleTransitionForEvent(_ event: Event<T>) -> Transition<T> {
         if !events.contains(event) {
             return .error(.unknownEvent)
         }
@@ -246,7 +246,7 @@ public class StateMachine<T:Hashable> {
      - Parameter value: value of state to search for
      - Returns: state, if found.
      */
-    public func stateWithValue(_ value: T) -> State<T>? {
+    open func stateWithValue(_ value: T) -> State<T>? {
         return availableStates.filter { (element) -> Bool in
             return element.value == value
         }.first
@@ -255,7 +255,7 @@ public class StateMachine<T:Hashable> {
     /// Retrieve event with specific name
     /// - Parameter name: Name of the event
     /// - Returns: event, if found.
-    public func eventWithName(_ name: String) -> Event<T>? {
+    open func eventWithName(_ name: String) -> Event<T>? {
         return events.filter { (element) -> Bool in
             return element.name == name
         }.first
@@ -264,7 +264,7 @@ public class StateMachine<T:Hashable> {
     /// Check, whether state machine is in concrete state
     /// - Parameter stateValue: value of state to check for
     /// - Returns: whether state machine is in this state.
-    public func isInState(_ stateValue: T) -> Bool {
+    open func isInState(_ stateValue: T) -> Bool {
         return stateValue == currentState.value
     }
 }
