@@ -20,9 +20,6 @@ install-coverage:
 install-cocoapods:
 	true
 
-# install-oss-osx:
-# 	sh swiftenv-install.sh
-
 # Run Tasks
 
 test-iOS:
@@ -64,6 +61,3 @@ test-coverage:
 
 test-cocoapods:
 	pod lib lint Transporter.podspec --verbose
-
-# test-oss-osx:
-# 	. ~/.swiftenv/init && swift build

@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/DenHeadless/Transporter/releases/tag/3.0.0)
+
+Swift 3 release. No API additions.
+
 ## [2.0.0](https://github.com/DenHeadless/Transporter/releases/tag/2.0.0)
 
 Transporter 2.0 is a truly cross-platform release. Supported platforms:
