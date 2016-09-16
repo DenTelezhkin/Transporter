@@ -18,7 +18,7 @@ install-coverage:
 	true
 
 install-cocoapods:
-	true
+	gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
 
 # Run Tasks
 
