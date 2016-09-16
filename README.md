@@ -120,11 +120,11 @@ Due to generic implementation of Transporter, it will not support Objective-C. I
 
 ### Requirements
 
-* iOS 8 
+* iOS 8
 * Mac OS 10.10
 * watchOS 2
 * tvOS 9.0
-* Swift 2.1
+* Swift 3
 * XCode 7
 
 ### Installation
@@ -132,11 +132,11 @@ Due to generic implementation of Transporter, it will not support Objective-C. I
 #### CocoaPods
 
 ```ruby
-  pod 'Transporter', '~> 2.0.0'
+  pod 'Transporter', '~> 3.0.0'
 ```
 
 #### Carthage
 
 ```ruby
-  carthage 'DenHeadless/Transporter' "2.0.0"
+  carthage 'DenHeadless/Transporter' "3.0.0"
 ```
