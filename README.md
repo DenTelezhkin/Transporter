@@ -125,7 +125,7 @@ Due to generic implementation of Transporter, it will not support Objective-C. I
 * watchOS 2
 * tvOS 9.0
 * Swift 3
-* XCode 7
+* XCode 8
 
 ### Installation
 
