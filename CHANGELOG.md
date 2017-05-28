@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [3.0.1](https://github.com/DenHeadless/Transporter/releases/tag/3.0.1)
+
 * Added SPM integration
 
 ## [3.0.0](https://github.com/DenHeadless/Transporter/releases/tag/3.0.0)
