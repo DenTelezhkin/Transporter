@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+# Next
+
+* Added SPM integration
+
 ## [3.0.0](https://github.com/DenHeadless/Transporter/releases/tag/3.0.0)
 
 Swift 3 release. No API additions.
