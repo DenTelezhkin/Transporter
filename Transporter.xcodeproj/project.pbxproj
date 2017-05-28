@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A2BB2651A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */; };
+		63AA03831ED809C3000AA1C6 /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA037C1ED809C3000AA1C6 /* AddingStatesTestCase.swift */; };
+		63AA03841ED809C3000AA1C6 /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA037D1ED809C3000AA1C6 /* EnumTestCase.swift */; };
+		63AA03851ED809C3000AA1C6 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA037E1ED809C3000AA1C6 /* EventTests.swift */; };
+		63AA03861ED809C3000AA1C6 /* StateEventsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA037F1ED809C3000AA1C6 /* StateEventsTestCase.swift */; };
+		63AA03871ED809C3000AA1C6 /* StateMachineConstructorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA03801ED809C3000AA1C6 /* StateMachineConstructorsTests.swift */; };
+		63AA03881ED809C3000AA1C6 /* StateMachineStateSwitchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA03811ED809C3000AA1C6 /* StateMachineStateSwitchingTests.swift */; };
+		63AA03891ED809C3000AA1C6 /* StateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA03821ED809C3000AA1C6 /* StateTests.swift */; };
 		9A3442051C706CD500E3AC14 /* Transporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3C8661A14F11600D68CC3 /* Transporter.framework */; };
-		9AA3C8591A14E37400D68CC3 /* AddingStatesTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */; };
-		9AA3C85A1A14E37400D68CC3 /* EnumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */; };
-		9AA3C85B1A14E37400D68CC3 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8551A14E37400D68CC3 /* EventTests.swift */; };
-		9AA3C85C1A14E37400D68CC3 /* StateEventsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */; };
-		9AA3C85D1A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */; };
-		9AA3C85E1A14E37400D68CC3 /* StateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA3C8581A14E37400D68CC3 /* StateTests.swift */; };
 		9AA3C8891A14FA0A00D68CC3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD84A919FF9D76001C2639 /* Event.swift */; };
 		9AA3C88A1A14FA0A00D68CC3 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8CA0F1969C668006F1EAC /* State.swift */; };
 		9AA3C88B1A14FA0A00D68CC3 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */; };
@@ -31,20 +31,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63AA037C1ED809C3000AA1C6 /* AddingStatesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingStatesTestCase.swift; sourceTree = "<group>"; };
+		63AA037D1ED809C3000AA1C6 /* EnumTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTestCase.swift; sourceTree = "<group>"; };
+		63AA037E1ED809C3000AA1C6 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
+		63AA037F1ED809C3000AA1C6 /* StateEventsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateEventsTestCase.swift; sourceTree = "<group>"; };
+		63AA03801ED809C3000AA1C6 /* StateMachineConstructorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineConstructorsTests.swift; sourceTree = "<group>"; };
+		63AA03811ED809C3000AA1C6 /* StateMachineStateSwitchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachineStateSwitchingTests.swift; sourceTree = "<group>"; };
+		63AA03821ED809C3000AA1C6 /* StateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTests.swift; sourceTree = "<group>"; };
 		9A03334C1C6FBDFC00065221 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = UniversalFramework_Base.xcconfig; path = xcconfigs/UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		9A03334D1C6FBDFC00065221 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = UniversalFramework_Framework.xcconfig; path = xcconfigs/UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
 		9A03334E1C6FBDFC00065221 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = UniversalFramework_Test.xcconfig; path = xcconfigs/UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
-		9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachineConstructorsTests.swift; path = Tests/StateMachineConstructorsTests.swift; sourceTree = SOURCE_ROOT; };
 		9A31BD6D19ED55CB005BAE5A /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachine.swift; path = Sources/StateMachine.swift; sourceTree = SOURCE_ROOT; };
 		9A3526FF1A1601050006AB0F /* MessagesState.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MessagesState.playground; sourceTree = "<group>"; };
 		9A4F5FE91BF89C4800E731F4 /* Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Tests.plist; path = Plists/Tests.plist; sourceTree = "<group>"; };
 		9A4F5FEA1BF89C4800E731F4 /* Transporter.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Transporter.plist; path = Plists/Transporter.plist; sourceTree = "<group>"; };
-		9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddingStatesTestCase.swift; path = Tests/AddingStatesTestCase.swift; sourceTree = SOURCE_ROOT; };
-		9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnumTestCase.swift; path = Tests/EnumTestCase.swift; sourceTree = SOURCE_ROOT; };
-		9AA3C8551A14E37400D68CC3 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTests.swift; path = Tests/EventTests.swift; sourceTree = SOURCE_ROOT; };
-		9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateEventsTestCase.swift; path = Tests/StateEventsTestCase.swift; sourceTree = SOURCE_ROOT; };
-		9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateMachineStateSwitchingTests.swift; path = Tests/StateMachineStateSwitchingTests.swift; sourceTree = SOURCE_ROOT; };
-		9AA3C8581A14E37400D68CC3 /* StateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateTests.swift; path = Tests/StateTests.swift; sourceTree = SOURCE_ROOT; };
 		9AA3C8601A14F04300D68CC3 /* Turnstile.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Turnstile.playground; sourceTree = "<group>"; };
 		9AA3C8661A14F11600D68CC3 /* Transporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Transporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC8C9FC1969BBB5006F1EAC /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +71,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63AA037B1ED809C3000AA1C6 /* TransporterTests */ = {
+			isa = PBXGroup;
+			children = (
+				63AA037C1ED809C3000AA1C6 /* AddingStatesTestCase.swift */,
+				63AA037D1ED809C3000AA1C6 /* EnumTestCase.swift */,
+				63AA037E1ED809C3000AA1C6 /* EventTests.swift */,
+				63AA037F1ED809C3000AA1C6 /* StateEventsTestCase.swift */,
+				63AA03801ED809C3000AA1C6 /* StateMachineConstructorsTests.swift */,
+				63AA03811ED809C3000AA1C6 /* StateMachineStateSwitchingTests.swift */,
+				63AA03821ED809C3000AA1C6 /* StateTests.swift */,
+			);
+			name = TransporterTests;
+			path = Tests/TransporterTests;
+			sourceTree = SOURCE_ROOT;
+		};
 		9A03334B1C6FBDDC00065221 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,13 +141,7 @@
 		9AC8C9FF1969BBB5006F1EAC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9AA3C8531A14E37400D68CC3 /* AddingStatesTestCase.swift */,
-				9AA3C8541A14E37400D68CC3 /* EnumTestCase.swift */,
-				9AA3C8551A14E37400D68CC3 /* EventTests.swift */,
-				9AA3C8561A14E37400D68CC3 /* StateEventsTestCase.swift */,
-				9AA3C8571A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift */,
-				9AA3C8581A14E37400D68CC3 /* StateTests.swift */,
-				9A2BB2641A163CA800EAEA51 /* StateMachineConstructorsTests.swift */,
+				63AA037B1ED809C3000AA1C6 /* TransporterTests */,
 			);
 			name = Tests;
 			path = StateMachineTests;
@@ -247,13 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AA3C8591A14E37400D68CC3 /* AddingStatesTestCase.swift in Sources */,
-				9AA3C85B1A14E37400D68CC3 /* EventTests.swift in Sources */,
-				9AA3C85A1A14E37400D68CC3 /* EnumTestCase.swift in Sources */,
-				9AA3C85D1A14E37400D68CC3 /* StateMachineStateSwitchingTests.swift in Sources */,
-				9AA3C85E1A14E37400D68CC3 /* StateTests.swift in Sources */,
-				9AA3C85C1A14E37400D68CC3 /* StateEventsTestCase.swift in Sources */,
-				9A2BB2651A163CA800EAEA51 /* StateMachineConstructorsTests.swift in Sources */,
+				63AA03841ED809C3000AA1C6 /* EnumTestCase.swift in Sources */,
+				63AA03891ED809C3000AA1C6 /* StateTests.swift in Sources */,
+				63AA03851ED809C3000AA1C6 /* EventTests.swift in Sources */,
+				63AA03881ED809C3000AA1C6 /* StateMachineStateSwitchingTests.swift in Sources */,
+				63AA03861ED809C3000AA1C6 /* StateEventsTestCase.swift in Sources */,
+				63AA03831ED809C3000AA1C6 /* AddingStatesTestCase.swift in Sources */,
+				63AA03871ED809C3000AA1C6 /* StateMachineConstructorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
