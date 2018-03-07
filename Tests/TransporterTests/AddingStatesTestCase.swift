@@ -46,4 +46,12 @@ class AddingStatesTestCase: XCTestCase {
         
         XCTAssertNil(state)
     }
+
+    func test_addStates_whenStateExists_doesNotOverridePreviousValue() {
+        let state = State(5)
+        machine.addState(state)
+        XCTAssertEqual(machine.availableStates.filter { $0.value == 5 }.count, 1)
+        machine.addState(State(5))
+        XCTAssertEqual(machine.availableStates.filter { $0.value == 5 }.count, 1)
+    }
 }

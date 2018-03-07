@@ -66,7 +66,7 @@ open class StateMachine<T:Hashable> {
     open private(set) var currentState : State<T>
     
     /// Available states in state machine
-    private lazy var availableStates : [State<T>] = []
+    public private(set) lazy var availableStates : [State<T>] = []
     
     /// Available events in state machine
     private lazy var events : [Event<T>] = []
@@ -77,7 +77,7 @@ open class StateMachine<T:Hashable> {
     {
         self.initialState = initialState
         self.currentState = initialState
-        availableStates.append(initialState)
+        addState(initialState)
     }
     
     /// Create `StateMachine` with initialState value
@@ -94,7 +94,7 @@ open class StateMachine<T:Hashable> {
     convenience public init(initialState: State<T>, states: [State<T>])
     {
         self.init(initialState: initialState)
-        self.availableStates.append(contentsOf: states)
+        addStates(states)
     }
     
     /// Activate state, if it's present in `StateMachine`. This method is not tied to events, present in StateMachine.
@@ -131,13 +131,14 @@ open class StateMachine<T:Hashable> {
     /// Add state to array of available states
     /// - Parameter state: state to add
     open func addState(_ state: State<T>) {
-        availableStates.append(state)
+        addStates([state])
     }
     
     /// Add array of states
     /// - Parameter states: states array.
     open func addStates(_ states: [State<T>]) {
-        availableStates.append(contentsOf: states)
+        let availableStateNames = Set(availableStates.map { $0.value })
+        availableStates.append(contentsOf: states.filter { !availableStateNames.contains($0.value) })
     }
     
     /// Add event to `StateMachine`. This method checks, whether source states and destination state of event are present in `StateMachine`. If not - event will not be added, and this method will throw.
