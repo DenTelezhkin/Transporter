@@ -95,7 +95,19 @@ class StringTests: XCTestCase {
         machine.fireEvent("Pass")
         XCTAssert(machine.isInState("Passed"))
     }
-    
+
+    func testStateTransitionsWithMultipleEvents() {
+        let event1 = Event(name: "Toggle", sourceValues: ["Initial"], destinationValue: "Passed")
+        let event2 = Event(name: "Toggle", sourceValues: ["Passed"], destinationValue: "Initial")
+        machine.addEvents([event1, event2])
+        XCTAssertTrue(machine.canFireEvent("Toggle"))
+        machine.fireEvent("Toggle")
+        XCTAssert(machine.isInState("Passed"))
+        XCTAssertTrue(machine.canFireEvent("Toggle"))
+        machine.fireEvent("Toggle")
+        XCTAssert(machine.isInState("Initial"))
+    }
+
     func testShouldFireEventBlock() {
         let event = Event(name: "Pass", sourceValues: ["Initial"], destinationValue: "Passed")
         event.shouldFireEvent = { _ in

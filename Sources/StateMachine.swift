@@ -219,11 +219,10 @@ open class StateMachine<T:Hashable> {
      - Returns: true, if event can be fired, false if don't
     */
     open func canFireEvent(_ eventName: String) -> Bool {
-        if let event = eventWithName(eventName)
-        {
-           return canFireEvent(event)
+        let events = eventsWithName(eventName)
+        return events.contains { (event) -> Bool in
+            return canFireEvent(event)
         }
-        return false
     }
     
     /**
@@ -256,10 +255,10 @@ open class StateMachine<T:Hashable> {
     /// Retrieve event with specific name
     /// - Parameter name: Name of the event
     /// - Returns: event, if found.
-    open func eventWithName(_ name: String) -> Event<T>? {
+    open func eventsWithName(_ name: String) -> [Event<T>] {
         return events.filter { (element) -> Bool in
             return element.name == name
-        }.first
+        }
     }
     
     /// Check, whether state machine is in concrete state
@@ -285,7 +284,10 @@ private extension StateMachine {
      */
     ///
     func _fireEventNamed(_ eventName: String) -> Transition<T> {
-        if let event = eventWithName(eventName) {
+        let events = eventsWithName(eventName)
+        guard !events.isEmpty else { return .error(.unknownEvent) }
+
+        for event in events {
             let possibleTransition = possibleTransitionForEvent(event)
             switch possibleTransition {
             case .success(let sourceState, let destinationState):
@@ -307,12 +309,11 @@ private extension StateMachine {
                 else {
                     return processState()
                 }
-            default :
-                return possibleTransition
+            default:
+                break
             }
         }
-        else {
-            return .error(.unknownEvent)
-        }
+
+        return .error(.wrongSourceState)
     }
 }
