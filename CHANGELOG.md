@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+* Events can now trigger different transitions, even if they have the same name.
+* State values are now required to be unique.
+* `StateMachine.availableStates` property is now public.
+
 ## [3.0.1](https://github.com/DenHeadless/Transporter/releases/tag/3.0.1)
 
 * Added SPM integration
