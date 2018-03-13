@@ -252,13 +252,20 @@ open class StateMachine<T:Hashable> {
         }.first
     }
     
+    /// Retrieve events with specific name
+    /// - Parameter name: Name of the event
+    /// - Returns: events with specified name, if found.
+    open func eventsWithName(_ name: String) -> [Event<T>] {
+        return events.filter { element in
+            return element.name == name
+        }
+    }
+    
     /// Retrieve event with specific name
     /// - Parameter name: Name of the event
     /// - Returns: event, if found.
-    open func eventsWithName(_ name: String) -> [Event<T>] {
-        return events.filter { (element) -> Bool in
-            return element.name == name
-        }
+    open func eventWithName(_ name: String) -> Event<T>? {
+        return eventsWithName(name).first
     }
     
     /// Check, whether state machine is in concrete state
