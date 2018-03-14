@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "Transporter"
-  s.version      = "3.0.1"
+  s.version      = "3.1.0"
   s.summary      = "Modern finite-state machine implemented in pure Swift."
 
   s.homepage     = "https://github.com/DenHeadless/Transporter"

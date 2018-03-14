@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [3.1.0](https://github.com/DenHeadless/Transporter/releases/tag/3.1.0)
+
 * Events can now trigger different transitions, even if they have the same name.
 * State values are now required to be unique.
 * `StateMachine.availableStates` property is now public.
