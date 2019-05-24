@@ -198,11 +198,11 @@
 				TargetAttributes = {
 					9AA3C8651A14F11600D68CC3 = {
 						CreatedOnToolsVersion = 6.1;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 					};
 					9AC8C9FB1969BBB5006F1EAC = {
 						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -211,6 +211,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 9AC8C9E61969BBB5006F1EAC;
@@ -292,6 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Transporter;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
@@ -312,6 +314,7 @@
 				PRODUCT_NAME = Transporter;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
@@ -422,6 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -435,6 +439,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mlsdev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

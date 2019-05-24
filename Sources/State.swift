@@ -29,7 +29,7 @@
 open class State <T:Hashable>  {
     
     /// Value of state
-    open let value : T
+    public let value : T
     
     /// Closure, that will be executed, before state machine enters this state
     open var willEnterState: ( (_ enteringState : State<T> ) -> Void)?
