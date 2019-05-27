@@ -210,7 +210,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (~> 1.7)
+  cocoapods
   fastlane
   netrc
   octokit

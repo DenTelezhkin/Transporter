@@ -1,4 +1,3 @@
-
 Pod::Spec.new do |s|
   s.name         = "Transporter"
   s.version      = "3.2.0"
@@ -7,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/DenHeadless/Transporter"
   s.license      = "MIT"
   s.author             = { "Denys Telezhkin" => "denys.telezhkin@yandex.ru" }
-  s.social_media_url   = "http://twitter.com/DTCoder"
+  s.social_media_url   = "http://twitter.com/DenTelezhkin"
 
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
@@ -15,6 +14,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.swift_versions = ['4.0', '4.2', '5.0']
-  s.source       = { :git => "https://github.com/DenHeadless/Transporter.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/DenTelezhkin/Transporter.git", :tag => s.version.to_s }
   s.source_files  = "Sources/*.{swift}"
 end

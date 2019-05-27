@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [3.2.0](https://github.com/DenHeadless/Transporter/releases/tag/3.2.0)
+
 * Support for Xcode 10.2 / Swift 5(thanks @ivanmisuno-albelli!)
 
 ## [3.1.0](https://github.com/DenHeadless/Transporter/releases/tag/3.1.0)
