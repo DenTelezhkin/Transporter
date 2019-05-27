@@ -89,11 +89,11 @@ lane :release do |params|
     puts "Pushing as a GitHub Release."
     fastlane_require 'octokit'
     stripped_changelog = changelog.split(/^## /)[1].split("\n")[1..-1].join("\n").strip
-    Octokit::Client.new(netrc: true).
-      create_release('DenTelezhkin/Transporter',
-                     version,
-                     name: version,
-                     body: stripped_changelog)
+    client = Octokit::Client.new(netrc: true)
+    client.create_release('DenTelezhkin/Transporter',
+                          version,
+                          name: version,
+                          body: stripped_changelog)
 
      puts "Attaching Carthage prebuilt binary to release."
      releases = client.releases('DenTelezhkin/Transporter')
