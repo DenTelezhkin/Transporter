@@ -1,23 +1,20 @@
 language: objective-c
 sudo: false
+os: osx
 osx_image: xcode10.2
 
 matrix:
   include:
-    - os: osx
-      env: ACTION=test_ios11
-    - os: osx
-      env: ACTION=test_ios10
-    - os: osx
-      env: ACTION=test_macos
-    - os: osx
-      env: ACTION=test_tvos11
-    - os: osx
-      env: ACTION=build_watchos
-    - os: osx
-      env: ACTION=pod_lint
-    - os: osx
-      env: ACTION=carthage_build
+    - env: ACTION=test_ios12
+    - env: ACTION=test_ios11
+    - env: ACTION=test_tvos12
+    - env: ACTION=test_tvos11
+    - env: ACTION=test_ios_swift4
+    - env: ACTION=test_tvos_swift4
+    - env: ACTION=test_macos
+    - env: ACTION=build_watchos
+    - env: ACTION=pod_lint
+    - env: ACTION=carthage_build
     # - os: osx
     #   env: ACTION=spm_macos
 
