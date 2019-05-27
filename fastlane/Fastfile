@@ -25,7 +25,7 @@ lane :build_watchos do
 end
 
 lane :pod_lint do
-  pod_lib_lint(allow_warnings: true, verbose: true)
+  pod_lib_lint(allow_warnings: true, verbose: true, swift_version: "5")
 end
 
 lane :carthage_build do

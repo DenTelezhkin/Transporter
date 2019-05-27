@@ -58,13 +58,13 @@ public enum Transition<T:Hashable> {
 open class Event<T:Hashable> : Equatable {
     
     /// Name of event
-    open let name : String
+    public let name : String
     
     /// Array of source values, in which event can be fired
-    open let sourceValues: [T]
+    public let sourceValues: [T]
     
     /// Destination value for state, to which state machine will switch after firing event.
-    open let destinationValue: T
+    public let destinationValue: T
     
     ///  If this closure return value is false, event will not be fired
     open var shouldFireEvent: ( (_ event : Event) -> Bool )?
@@ -86,7 +86,7 @@ open class Event<T:Hashable> : Equatable {
     }
     
     /// Returns true, if events have the same name
-    static open func ==(lhs:Event<T>,rhs:Event<T>) -> Bool {
+    static public func ==(lhs:Event<T>,rhs:Event<T>) -> Bool {
         return lhs.name == rhs.name
     }
 }
