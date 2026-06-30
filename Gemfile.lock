@@ -103,7 +103,7 @@ GEM
       ffi (>= 1.15.0)
       logger
     excon (0.71.0)
-    faraday (1.10.5)
+    faraday (1.10.6)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -241,7 +241,7 @@ GEM
     minitest (5.27.0)
     molinillo (0.8.0)
     multi_json (1.13.1)
-    multipart-post (2.0.0)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
     nanaimo (0.4.0)
     nap (1.1.0)
